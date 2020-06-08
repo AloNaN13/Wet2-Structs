@@ -1,7 +1,7 @@
 
 
 
-/* OLD CODE FROM WET1
+OLD CODE FROM WET1
 
 
 
@@ -56,6 +56,7 @@ private:
     Node* root;
     Node* iterator;
     Node* first;
+    Node* last;
     int numOfNodes;
     void swapNodes(Node *node_to_del,Node* next_by_value);
 
@@ -72,7 +73,7 @@ private:
     Node* buildTreeFromArrays(Element* arrElement, Key* arrKey, int len );
     static Node* copyNodes(Node* current,const Node* Node_to_copy);
 public:
-    AvlTree():root(nullptr),iterator(nullptr),first(nullptr),numOfNodes(0){};
+    AvlTree():root(nullptr),iterator(nullptr),first(nullptr),last(nullptr),numOfNodes(0){};
     AvlTree(Element* arrElement, Key* arrKey, int num);
     ~AvlTree();
     AvlTree(const AvlTree& other);
@@ -84,6 +85,8 @@ public:
     Element* getElementptr(const Key& key);
     Element* getFirst();
     Element* getNext();
+    Element* getLast();
+    Element* getPrevious();
     const Key& getKey(){return iterator->key;}
     bool findKeyAlreadyExists(const Key& key);
     int getNumNodes() const { return numOfNodes;}
@@ -95,6 +98,7 @@ public:
         }
         root= nullptr;
         first= nullptr;
+        last= nullptr;
         iterator= nullptr;
     }
     void printTreeInOrder(Node* startingNode);
@@ -109,11 +113,16 @@ public:
  * @param other-the AvlTree that need to be copied
  */
 template <class Element,class Key>
-AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullptr),first(nullptr),numOfNodes(0){
+AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullptr),first(nullptr),
+                                                    last(nullptr),numOfNodes(0){
     root=copyNodes(root,other.getRoot());
     first=root;
     while (first &&first->left_son){
         first=first->left_son;
+    }
+    last=root;
+    while(root &&root->right_son){
+        root=root->right_son;
     }
     this->numOfNodes=other.getNumNodes();
     //root=new Node(other_root->data,other_root->key);
@@ -156,11 +165,15 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* curre
  */
 template <class Element,class Key>
 AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nullptr)
-                                                ,iterator(nullptr),first(nullptr){
+                                                ,iterator(nullptr),first(nullptr),last(nullptr){
     root=buildTreeFromArrays(arrElement,arrKey,num);
     first=root;
     while(first && first->left_son){
         first=first->left_son;
+    }
+    last=root;
+    while(root &&root->right_son){
+        root=root->right_son;
     }
 }
 
@@ -212,7 +225,19 @@ Element* AvlTree<Element,Key>::getFirst() {
     iterator=first;
     return &iterator->data;
 }
-
+/***
+ * sets the iterator to the maximal node(by key) in the tree and returns a pointer
+ * to his data
+ * @return -pointer to the data of the maximal Node in the tree, null_ptr if the tree is empty
+ */
+template <class Element,class Key>
+Element* AvlTree<Element,Key>::getNext() {
+    if(root== nullptr){
+        return nullptr;
+    }
+    iterator=last;
+    return &iterator->data;
+}
 
 /***
  * sess iterator to the next Node by order in the tree and returns its data, if
@@ -242,6 +267,31 @@ Element* AvlTree<Element,Key>::getNext() {
     }
     iterator=iterator->parent;
     return &iterator->data;
+}
+
+template <class Element,class Key>
+Element* AvlTree<Element,Key>::getPrevious() {
+    if(iterator== nullptr){
+        return nullptr;
+    }
+    if(iterator->left_son){
+        iterator=iterator->left_son;
+        while (iterator->right_son){
+            iterator=iterator->right_son;
+        }
+        return &iterator->data;
+    }
+    if(!iterator->parent){//the case where we are in the root and no left sons
+        iterator= nullptr;
+        return nullptr;
+    }
+    if(iterator->parent->right_son==iterator){
+        iterator=iterator->parent;
+        return &iterator->data;
+    }
+    //we are in the minimal node
+    iterator= nullptr;
+    return nullptr;
 }
 
 /***
@@ -386,6 +436,7 @@ AvlTree<Element,Key>::~AvlTree(){
         deleteAllNodes(root);
     }
     first= nullptr;
+    last= nullptr;
     root= nullptr;
     iterator= nullptr;
 }
@@ -752,12 +803,16 @@ AvlTreeResult AvlTree<Element,Key>::insert(const Element &ele, const Key& key) {
         root->hr=0;
         root->hl=0;
         first=root;
+        last=root;
         numOfNodes++;
         return AVL_SUCCESS;
     }
     InsertNode(*ptr);
     if(key<first->key){
         first=ptr;
+    }
+    if(key>last->key){
+        last=ptr;
     }
     numOfNodes++;
     return AVL_SUCCESS;
@@ -771,6 +826,7 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
     }
     Node& node_to_del=root->getNodeFromKey(key);
     bool setFirst=(&node_to_del==first);
+    bool setLast=(&node_to_del==last);
     Node* parent=removeBinarySearch(&node_to_del);
    // assert(findKeyAlreadyExists(key)== false);
 
@@ -800,6 +856,18 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
         parent=parent->parent;
     }
 
+    if(setLast){
+        if(root!= nullptr){
+            last=root;
+            while (last&&last->right_son){
+                last=last->right_son;
+            }
+        } else{
+            last= nullptr;
+            first= nullptr;
+        }
+
+    }
     if(setFirst){
         if(root== nullptr){
             return AVL_SUCCESS;
@@ -810,6 +878,8 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
             first=first->left_son;
         }
     }
+
+
     numOfNodes--;
     return AVL_SUCCESS;
 }
