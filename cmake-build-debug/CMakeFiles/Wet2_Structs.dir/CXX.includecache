@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/AVLTree.h
+cmath
+-
+iostream
+-
+assert.h
+-
+
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/AvlTree.h
+cmath
+-
+iostream
+-
+assert.h
+-
+
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main_test.cpp
+AVLTree.h
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/AVLTree.h
+vector
+-
+ostream
+-
+random
+-
+chrono
+-
+algorithm
+-
+AvlTree.h
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/AvlTree.h
+

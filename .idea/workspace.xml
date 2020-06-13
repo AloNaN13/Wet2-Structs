@@ -11,7 +11,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b601c89-f215-4140-95f0-cdf5598fb89d" name="Default Changelist" comment="" />
+    <list default="true" id="9b601c89-f215-4140-95f0-cdf5598fb89d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HashTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable.h" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +74,13 @@
       <option name="presentableId" value="Default" />
       <updated>1591890711224</updated>
       <workItem from="1591890715197" duration="14014000" />
+<<<<<<< HEAD
       <workItem from="1592059586237" duration="71000" />
       <workItem from="1592059659248" duration="3402000" />
+=======
+      <workItem from="1592059785884" duration="36000" />
+      <workItem from="1592059823058" duration="2284000" />
+>>>>>>> master
     </task>
     <servers />
   </component>
