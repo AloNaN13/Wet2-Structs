@@ -1,7 +1,6 @@
 
 
 
-OLD CODE FROM WET1
 
 
 
@@ -32,9 +31,13 @@ private:
         Node* parent;
         int hl;
         int hr;
+        int size_sub_tree;
+        int size_left_sub_tree;
+        int size_right_sub_tree;
 
         Node(const Element& data,const Key& key):data(*(new Element(data))),key(*(new Key(key))),right_son(nullptr)
-                ,left_son(nullptr),parent(nullptr),hl(0),hr(0){};
+                ,left_son(nullptr),parent(nullptr),hl(0),hr(0),size_sub_tree(1),
+                size_left_sub_tree(0),size_right_sub_tree(0){};
         ~Node(){
             delete &data;
             delete &key;
@@ -46,6 +49,7 @@ private:
         }
             return 1+hr;
         };
+        int getSubTreeSize(){ return size_sub_tree;};
         int getBalanceFactor();
 
         Node* getParent(){ return parent;};
@@ -149,6 +153,14 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* curre
     if(current->left_son){
         current->left_son->parent=current;
     }
+    current->size_sub_tree=Node_to_copy->size_sub_tree;
+    if(Node_to_copy->size_right_sub_tree>0){
+        current->size_right_sub_tree=Node_to_copy->size_right_sub_tree;
+    }
+    if(Node_to_copy->size_left_sub_tree>0){
+        current->size_left_sub_tree=Node_to_copy->size_left_sub_tree;
+
+    }
     current->hr=Node_to_copy->hr;
     current->hl=Node_to_copy->hl;
     return current;
@@ -199,6 +211,8 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::
             if(currentNode->right_son!= nullptr){
                 currentNode->right_son->parent=currentNode;
                 currentNode->hr=currentNode->right_son->getHeight();
+                currentNode->size_right_sub_tree=currentNode->right_son->size_sub_tree;
+                currentNode->size_sub_tree=currentNode->size_sub_tree+currentNode->right_son->getSubTreeSize();
             }
             else{
                 currentNode->hr=0;
@@ -206,6 +220,8 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::
             if(currentNode->left_son!= nullptr){
                 currentNode->left_son->parent= currentNode;
                 currentNode->hl=currentNode->left_son->getHeight();
+                currentNode->size_left_sub_tree=currentNode->left_son->size_left_sub_tree;
+                currentNode->size_sub_tree=currentNode->size_sub_tree+currentNode->left_son->getSubTreeSize();
             } else{
                 currentNode->hl=0;
             }
@@ -308,7 +324,7 @@ Element* AvlTree<Element,Key>::getElementptr(const Key &key) {
     Node& wanted=root->getNodeFromKey(key);
     return &wanted.data;
 }
-
+///fixes the height + the size_sub_tree
 template <class Element,class Key>
 void AvlTree<Element,Key>:: fixHeightAfterInsert(Node& inserted_node){
     inserted_node.hl=0;
@@ -320,6 +336,13 @@ void AvlTree<Element,Key>:: fixHeightAfterInsert(Node& inserted_node){
             parent->hl=tmp->getHeight();
         } else if(parent->right_son==tmp){
             parent->hr=tmp->getHeight();
+        }
+        parent->size_sub_tree++;
+        if(parent->right_son){
+            parent->size_right_sub_tree=parent->right_son->size_sub_tree;
+        }
+        ir(parent->left_son){
+            parent->size_left_sub_tree=parent->left_son->size_sub_tree;
         }
         tmp=parent;
         parent=tmp->parent;
@@ -335,19 +358,27 @@ void AvlTree<Element,Key>::fixHeightAfterRemove(Node* parent_of_removed) {
     Node* parent=parent_of_removed->parent;
     if(parent_of_removed->right_son== nullptr){
         parent_of_removed->hr=0;
+        parent_of_removed->size_right_sub_tree=0;
+
     } else{
         parent_of_removed->hr=parent_of_removed->right_son->getHeight();
+        parent_of_removed->size_right_sub_tree=parent_of_removed->right_son->size_sub_tree;
     }
     if(parent_of_removed->left_son== nullptr){
         parent_of_removed->hl=0;
+        parent_of_removed->size_left_sub_tree=0;
     } else{
         parent_of_removed->hl=parent_of_removed->left_son->getHeight();
+        parent_of_removed->size_left_sub_tree=parent_of_removed->left_son->size_sub_tree;
     }
+    parent_of_removed->size_sub_tree=1+parent_of_removed->size_left_sub_tree+parent_of_removed->size_right_sub_tree;
     while (parent!=nullptr){
         if(parent->left_son==tmp){
             parent->hl=tmp->getHeight();
+            parent->size_left_sub_tree=parent->left_son->size_sub_tree;
         } else if(parent->right_son==tmp){
             parent->hr=tmp->getHeight();
+            parent->size_right_sub_tree=parent->right_son->size_sub_tree;
         }
         tmp=parent;
         parent=tmp->parent;
@@ -453,7 +484,6 @@ void AvlTree<Element,Key>::deleteAllNodes(Node *node) {
     }
 }
 
-
 template <class Element,class Key>
 void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
     if(node.right_son== nullptr){
@@ -465,6 +495,11 @@ void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
         node.right_son=B->left_son;
         if(B->left_son){
             B->left_son->parent=&node;
+            node.size_right_sub_tree=node.right_son->size_sub_tree;
+            node.size_sub_tree=1+node.size_right_sub_tree+node.size_left_sub_tree;
+        } else{
+            node.size_right_sub_tree=0;
+            node.size_sub_tree=1+node.size_right_sub_tree+node.size_left_sub_tree;
         }
         B->left_son=&node;
         B->parent= nullptr;
@@ -472,6 +507,8 @@ void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
         node.hr=node.hl;
         B->hl++;
         root=B;
+        B->size_left_sub_tree=B->left_son->size_sub_tree;
+        B->size_sub_tree=1+B->size_right_sub_tree+B->size_left_sub_tree;
         return;
     }
     //else
@@ -479,6 +516,12 @@ void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
         node.right_son=B->left_son;
         if(B->left_son){
             B->left_son->parent=&node;
+            node.size_right_sub_tree=node.right_son->size_sub_tree;
+            node.size_sub_tree=1+node.size_right_sub_tree+node.size_left_sub_tree;
+        }
+        else{
+            node.size_right_sub_tree=0;
+            node.size_sub_tree=1+node.size_right_sub_tree+node.size_left_sub_tree;
         }
         B->left_son=&node;
         B->parent= parent;
@@ -486,11 +529,18 @@ void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
         node.parent=B;
         node.hr=node.hl;
         B->hl++;
+        B->size_left_sub_tree=B->left_son->size_sub_tree;
+        B->size_sub_tree=1+B->size_right_sub_tree+B->size_left_sub_tree;
         return;
     }
     node.right_son=B->left_son;
     if(B->left_son){
         B->left_son->parent=&node;
+        node.size_right_sub_tree=node.right_son->size_sub_tree;
+        node.size_sub_tree=1+node.size_right_sub_tree+node.size_left_sub_tree;
+    }  else{
+        node.size_right_sub_tree=0;
+        node.size_sub_tree=1+node.size_right_sub_tree+node.size_left_sub_tree;
     }
     B->left_son=&node;
     B->parent= parent;
@@ -498,8 +548,9 @@ void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
     node.parent=B;
     node.hr=node.hl;
     B->hl++;
+    B->size_left_sub_tree=B->left_son->size_sub_tree;
+    B->size_sub_tree=1+B->size_right_sub_tree+B->size_left_sub_tree;
 }
-
 template <class Element,class Key>
 void AvlTree<Element,Key>::rotateRight(AvlTree<Element, Key>::Node &node) {
     if(node.left_son== nullptr){
@@ -511,12 +562,20 @@ void AvlTree<Element,Key>::rotateRight(AvlTree<Element, Key>::Node &node) {
         node.left_son=A->right_son;
         if(A->right_son){
             A->right_son->parent=&node;
+            node.size_left_sub_tree=node.left_son->size_sub_tree;
+            node.size_sub_tree=1+node.size_left_sub_tree+node.size_right_sub_tree;
+        }
+        else{
+            node.size_left_sub_tree=0;
+            node.size_sub_tree=1+node.size_left_sub_tree+node.size_right_sub_tree;
         }
         A->right_son=&node;
         A->parent= nullptr;
         node.parent=A;
         node.hl=node.hr;
         A->hr++;
+        A->size_right_sub_tree=node.size_sub_tree;
+        A->size_sub_tree=1+A->size_left_sub_tree+A->size_right_sub_tree;
         root=A;
         return;
     }
@@ -525,6 +584,12 @@ void AvlTree<Element,Key>::rotateRight(AvlTree<Element, Key>::Node &node) {
         node.left_son=A->right_son;
         if(A->right_son){
             A->right_son->parent=&node;
+            node.size_left_sub_tree=node.left_son->size_sub_tree;
+            node.size_sub_tree=1+node.size_left_sub_tree+node.size_right_sub_tree;
+        }
+        else{
+            node.size_left_sub_tree=0;
+            node.size_sub_tree=1+node.size_left_sub_tree+node.size_right_sub_tree;
         }
         A->right_son=&node;
         A->parent=parent;
@@ -532,11 +597,15 @@ void AvlTree<Element,Key>::rotateRight(AvlTree<Element, Key>::Node &node) {
         node.parent=A;
         node.hl=node.hr;
         A->hr++;
+        A->size_right_sub_tree=node.size_sub_tree;
+        A->size_sub_tree=1+A->size_left_sub_tree+A->size_right_sub_tree;
         return;
     }
     node.left_son=A->right_son;
     if(A->right_son){
         A->right_son->parent=&node;
+        node.size_left_sub_tree=node.left_son->size_sub_tree;
+        node.size_sub_tree=1+node.size_left_sub_tree+node.size_right_sub_tree;
     }
     A->right_son=&node;
     A->parent=parent;
@@ -544,6 +613,8 @@ void AvlTree<Element,Key>::rotateRight(AvlTree<Element, Key>::Node &node) {
     node.parent=A;
     node.hl=node.hr;
     A->hr++;
+    A->size_right_sub_tree=node.size_sub_tree;
+    A->size_sub_tree=1+A->size_left_sub_tree+A->size_right_sub_tree;
 }
 
 template <class Element,class Key>
@@ -668,6 +739,12 @@ void AvlTree<Element,Key>::swapNodes(Node* node_to_del,Node* next_by_value) {
     if(node_to_del==root){
         root=next_by_value;
     }
+    ////added this 3 lines
+    next_by_value->size_left_sub_tree=node_to_del->size_left_sub_tree;
+    next_by_value->size_right_sub_tree=node_to_del->size_right_sub_tree;
+    next_by_value->size_sub_tree=node_to_del->size_sub_tree;
+
+
     if(node_to_del->right_son==next_by_value){
         next_by_value->left_son=node_to_del->left_son;
         if(next_by_value->left_son){
@@ -802,6 +879,9 @@ AvlTreeResult AvlTree<Element,Key>::insert(const Element &ele, const Key& key) {
         root->parent= nullptr;
         root->hr=0;
         root->hl=0;
+        root->size_sub_tree=1;
+        root->size_right_sub_tree=0;
+        root->size_left_sub_tree=0;
         first=root;
         last=root;
         numOfNodes++;
@@ -841,16 +921,22 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
     while (parent!= nullptr){
         if(parent->left_son){
             parent->hl=parent->left_son->getHeight();
+            parent->size_left_sub_tree=parent->left_son->size_sub_tree;
         }
         else{
             parent->hl=0;
+            parent->size_left_sub_tree=0;
         }
         if(parent->right_son){
             parent->hr=parent->right_son->getHeight();
+            parent->size_right_sub_tree=parent->right_son->size_sub_tree;
         }
         else{
             parent->hr=0;
+            parent->size_right_sub_tree=0;
         };
+        parent->size_sub_tree=1+parent->size_left_sub_tree+parent->size_right_sub_tree;
+
         BalanceRemove(parent);
 
         parent=parent->parent;

@@ -1,13 +1,42 @@
 
 
 
-/* OLD CODE FROM WET1
+
 
 
 
 #include "Artist.h"
 
 
+
+ArtistResult Artist::addSong(int song_id) {
+    AvlTreeResult result=songs_tree.insert(0,song_id);
+    if(result==ARTIST_KEY_ALREADY_EXISTS){
+        return ARTIST_KEY_ALREADY_EXISTS;
+    }
+    //it was successfull
+    total_num_of_songs++;
+    return ARTIST_SUCCESS;
+}
+
+ArtistResult Artist::removeSong(int song_id) {
+    AvlTreeResult result=songs_tree.remove(song_id);
+    if(result==AVL_KEY_DOESNT_EXISTS){
+        return AVL_KEY_DOESNT_EXISTS;
+    }
+    //the remove was successfull
+    return ARTIST_SUCCESS;
+}
+
+ArtistResult Artist::addToSongCount(int song_id, int count) {
+    int* pre_count=songs_tree.getElementptr(key);
+    if(pre_count== nullptr){
+       return AVL_KEY_DOESNT_EXISTS;
+    }
+    *pre_count=+count;
+}
+
+/*
 Artist::Artist(int id, int num_of_songs) : full_songs_list((new StreamListNode*[num_of_songs])){
     artist_id = id;
     total_num_of_songs = num_of_songs;
