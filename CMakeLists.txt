@@ -5,9 +5,10 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(Wet2_Structs
-        Artist.cpp
-        Artist.h
+add_executable(
+        Wet2_Structs
+        #Artist.cpp
+        #Artist.h
         AvlTree.h
         HashTable.cpp
         HashTable.h
