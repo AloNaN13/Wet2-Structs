@@ -86,7 +86,7 @@ public:
 
 }
 
-        MMStatusType MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID) {
+MMStatusType MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID) {
     if(rank<=0 ||artist_ID== nullptr ||song_ID== nullptr){
         return MM_INVALID_INPUT;
     }
@@ -94,16 +94,9 @@ public:
         return MM_FAILURE;
     }
     ///need to use rank of tree
-
-
-    TreeSet* tmp=songs_of_system.getLast();
-    int count=1;
-    while (count!=rank){
-        tmp=songs_of_system.getPrevious();
-        count++;
-    }
-    *artist_ID=tmp->getArtistID();
-    *song_ID=tmp->getSongID();
+    TreeSet* wanted_rank=songs_of_system.getNodeInRank(rank);
+    *artist_ID=wanted_rank->getArtistID();
+    *song_ID=wanted_rank->getSongID();
     return MM_SUCCESS;
 }
 
