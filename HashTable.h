@@ -68,7 +68,7 @@ ListNode* HashTable::hashFindNode(int key){
     return nullptr;
 
     //should return HashResult?
-    
+
 }
 
 HashResult HashTable::hashInsertNode(ListNode* node_to_insert){
