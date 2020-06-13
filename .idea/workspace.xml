@@ -12,15 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b601c89-f215-4140-95f0-cdf5598fb89d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HashTable.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HashTable.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/~$t2_Tasks.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Artist.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Artist.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Artist.h" beforeDir="false" afterPath="$PROJECT_DIR$/Artist.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/List.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List.h" beforeDir="false" afterPath="$PROJECT_DIR$/List.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wet2_Tasks.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Wet2_Tasks.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HashTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
