@@ -1,73 +1,64 @@
 
 
 
-
-// implement changes
-
-
-
+/* OLD CODE FROM WET1
 
 
 
 #include "List.h"
 
 
-// return value? SUCCESS?
-void List::deleteAllListNodes(ListNode* node) {
+void StreamList::deleteAllStreamNodes(StreamListNode* node) {
     if(node){
-        List::deleteAllListNodes((node->getNextNode()));
+        deleteAllStreamNodes((node->getNextNode()));
         delete(node);
     }
 }
 
-List::~List(){
+StreamList::~StreamList(){
     if(first_node){
-        List::deleteAllListNodes(first_node);
+        deleteAllStreamNodes(first_node);
     }
 }
 
 
 // inserts after the curr_node
-ListResult List::insertNodeToList(ListNode* node_to_insert){
+StreamListResult StreamList::insertNode(StreamListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& stream_artists, int num_of_streams) {
 
-    // check if node already exists?
-    // remember to create node in the function before we insert it to the list!!!
+    // num_of_streams exists for sure - checked in thhe caller function
 
-    if(this->first_node == nullptr){
-        first_node = node_to_insert;
-        last_node = node_to_insert;
+    StreamListNode* new_node = new StreamListNode(stream_artists,num_of_streams); // why new?
+
+    if(curr_node->getNextNode() != nullptr){
+        new_node->SetNextNode(curr_node->getNextNode());
+        curr_node->getNextNode()->SetPrevNode(new_node);
     }
-    else{
-        node_to_insert->setNextNode(first_node);
-        first_node->setPrevNode(node_to_insert);
-        first_node = node_to_insert;
+    new_node->SetPrevNode(curr_node);
+    curr_node->SetNextNode(new_node);
+
+    if(curr_node == last_node){
+        last_node = curr_node->getNextNode();
     }
 
-    list_size++;
-    return LIST_SUCCESS;
+    return SL_SUCCESS;
 
 }
 
-ListResult List::removeNodeFromList(ListNode* node_to_remove){
+StreamListResult StreamList::removeNode(StreamListNode* node) {
 
-    // check if node even exists - I checked in the caller function
+    // num_of_streams exists for sure - checked in thhe caller function
 
-    if(node_to_remove->getNextNode() == nullptr){
-        last_node = node_to_remove->getPrevNode();
+    if(node->getNextNode() == nullptr){
+        last_node = node->getPrevNode();
     }
     else{
-        node_to_remove->getNextNode()->setPrevNode(node_to_remove->getPrevNode());
+        node->getNextNode()->SetPrevNode(node->getPrevNode());
+    }
+    if(node != first_node){
+        node->getPrevNode()->SetNextNode(node->getNextNode());
     }
 
-    if(node_to_remove == first_node){
-        first_node = node_to_remove->getNextNode();
-    }
-    else{
-        node_to_remove->getPrevNode()->setNextNode(node_to_remove->getNextNode());
-    }
-
-    list_size--;
-    delete(node_to_remove);
-    return LIST_SUCCESS;
+    delete(node);
+    return SL_SUCCESS;
 
 }

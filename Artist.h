@@ -71,7 +71,7 @@ public:
     StreamListNode* GetSongNumOfStreamsNode(int song_id);
     int GetTotalNumOfSongs() {return this->total_num_of_songs;};
     AvlTree<AvlTree<int,int>,int>& GetNumOfStreamsTree() {return this->num_of_streams_tree;};
-    int GetArtistID() {return this->artist_id;};
+    //int GetArtistID() {return this->artist_id;};
     /*AvlTree<int,int>* getSongsWithNumOfStreams(const Key& key){
         return num_of_streams_tree.getElementptr(key);
     }
