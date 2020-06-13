@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Wet2_Structs.dir/MusicManager.cpp.o"
   "CMakeFiles/Wet2_Structs.dir/library2.cpp.o"
   "CMakeFiles/Wet2_Structs.dir/main2.cpp.o"
+  "CMakeFiles/Wet2_Structs.dir/main_test.cpp.o"
   "Wet2_Structs.exe"
   "Wet2_Structs.pdb"
   "libWet2_Structs.dll.a"

@@ -285,6 +285,33 @@ main2.cpp.s:
 	$(MAKE) -f CMakeFiles/Wet2_Structs.dir/build.make CMakeFiles/Wet2_Structs.dir/main2.cpp.s
 .PHONY : main2.cpp.s
 
+main_test.o: main_test.cpp.o
+
+.PHONY : main_test.o
+
+# target to build an object file
+main_test.cpp.o:
+	$(MAKE) -f CMakeFiles/Wet2_Structs.dir/build.make CMakeFiles/Wet2_Structs.dir/main_test.cpp.o
+.PHONY : main_test.cpp.o
+
+main_test.i: main_test.cpp.i
+
+.PHONY : main_test.i
+
+# target to preprocess a source file
+main_test.cpp.i:
+	$(MAKE) -f CMakeFiles/Wet2_Structs.dir/build.make CMakeFiles/Wet2_Structs.dir/main_test.cpp.i
+.PHONY : main_test.cpp.i
+
+main_test.s: main_test.cpp.s
+
+.PHONY : main_test.s
+
+# target to generate assembly for a file
+main_test.cpp.s:
+	$(MAKE) -f CMakeFiles/Wet2_Structs.dir/build.make CMakeFiles/Wet2_Structs.dir/main_test.cpp.s
+.PHONY : main_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -312,6 +339,9 @@ help:
 	@echo "... main2.o"
 	@echo "... main2.i"
 	@echo "... main2.s"
+	@echo "... main_test.o"
+	@echo "... main_test.i"
+	@echo "... main_test.s"
 .PHONY : help
 
 

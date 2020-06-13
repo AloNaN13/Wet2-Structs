@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/MusicManager.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/MusicManager.cpp.o"
   "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/library2.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/library2.cpp.o"
   "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main2.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/main2.cpp.o"
+  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main_test.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/main_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

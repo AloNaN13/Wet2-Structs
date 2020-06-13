@@ -32,12 +32,13 @@ private:
     List* table;
     int table_size;
 public:
-    /*explicit*/ HashTable(int table_size): table_size(table_size), table(new List[table_size]) {}; // improve the new?
+    explicit HashTable(int table_size): table_size(table_size), table(new List[table_size]) {}; // improve the new?
     ~HashTable() {delete[] table;};
     HashTable(const HashTable& hash) = delete; //implement?
     HashTable& operator=(const HashTable& hash) = delete; //implement?
 
     int hashFunction(int key);
+    ListNode* hashFindNode(int key);
     HashResult hashInsertNode(ListNode* node_to_insert);
     HashResult hashDeleteNode(int key);
 
@@ -54,6 +55,20 @@ public:
 
 int HashTable::hashFunction(int key){
     return (key % this.table_size);
+}
+
+ListNode* HashTable::hashFindNode(int key){
+    int hashed_key = hashFunction(key);
+    ListNode* curr_node = table[hashed_key].getListFirstNode();
+    for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
+        if(curr_node->getNodeKey() == key){
+            return curr_node;
+        }
+    }
+    return nullptr;
+
+    //should return HashResult?
+    
 }
 
 HashResult HashTable::hashInsertNode(ListNode* node_to_insert){

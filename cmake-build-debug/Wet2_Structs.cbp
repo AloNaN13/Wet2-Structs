@@ -118,6 +118,9 @@
 		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main2.cpp">
 			<Option target="Wet2_Structs"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main_test.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
