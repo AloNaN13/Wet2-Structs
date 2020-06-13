@@ -1,64 +1,73 @@
 
 
 
-/* OLD CODE FROM WET1
-//check
+
+// implement changes
+
+
+
+
 
 
 #include "List.h"
 
 
-void StreamList::deleteAllStreamNodes(StreamListNode* node) {
+// return value? SUCCESS?
+void List::deleteAllListNodes(ListNode* node) {
     if(node){
-        deleteAllStreamNodes((node->getNextNode()));
+        List::deleteAllListNodes((node->getNextNode()));
         delete(node);
     }
 }
 
-StreamList::~StreamList(){
+List::~List(){
     if(first_node){
-        deleteAllStreamNodes(first_node);
+        List::deleteAllListNodes(first_node);
     }
 }
 
 
 // inserts after the curr_node
-StreamListResult StreamList::insertNode(StreamListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& stream_artists, int num_of_streams) {
+ListResult List::insertNodeToList(ListNode* node_to_insert){
 
-    // num_of_streams exists for sure - checked in thhe caller function
+    // check if node already exists?
+    // remember to create node in the function before we insert it to the list!!!
 
-    StreamListNode* new_node = new StreamListNode(stream_artists,num_of_streams); // why new?
-
-    if(curr_node->getNextNode() != nullptr){
-        new_node->SetNextNode(curr_node->getNextNode());
-        curr_node->getNextNode()->SetPrevNode(new_node);
+    if(this->first_node == nullptr){
+        first_node = node_to_insert;
+        last_node = node_to_insert;
     }
-    new_node->SetPrevNode(curr_node);
-    curr_node->SetNextNode(new_node);
-
-    if(curr_node == last_node){
-        last_node = curr_node->getNextNode();
+    else{
+        node_to_insert->setNextNode(first_node);
+        first_node->setPrevNode(node_to_insert);
+        first_node = node_to_insert;
     }
 
-    return SL_SUCCESS;
+    list_size++;
+    return LIST_SUCCESS;
 
 }
 
-StreamListResult StreamList::removeNode(StreamListNode* node) {
+ListResult List::removeNodeFromList(ListNode* node_to_remove){
 
-    // num_of_streams exists for sure - checked in thhe caller function
+    // check if node even exists - I checked in the caller function
 
-    if(node->getNextNode() == nullptr){
-        last_node = node->getPrevNode();
+    if(node_to_remove->getNextNode() == nullptr){
+        last_node = node_to_remove->getPrevNode();
     }
     else{
-        node->getNextNode()->SetPrevNode(node->getPrevNode());
-    }
-    if(node != first_node){
-        node->getPrevNode()->SetNextNode(node->getNextNode());
+        node_to_remove->getNextNode()->setPrevNode(node_to_remove->getPrevNode());
     }
 
-    delete(node);
-    return SL_SUCCESS;
+    if(node_to_remove == first_node){
+        first_node = node_to_remove->getNextNode();
+    }
+    else{
+        node_to_remove->getPrevNode()->setNextNode(node_to_remove->getNextNode());
+    }
+
+    list_size--;
+    delete(node_to_remove);
+    return LIST_SUCCESS;
 
 }

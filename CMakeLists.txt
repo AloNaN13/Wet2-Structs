@@ -9,6 +9,8 @@ add_executable(Wet2_Structs
         Artist.cpp
         Artist.h
         AvlTree.h
+        HashTable.cpp
+        HashTable.h
         library2.cpp
         library2.h
         List.cpp
