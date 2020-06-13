@@ -10,12 +10,14 @@ add_executable(
         #Artist.cpp
         #Artist.h
         AvlTree.h
-        #library2.cpp
-        #library2.h
-        #List.cpp
-        #List.h
-        main_tests.cpp
-        #main2.cpp
-        #MusicManager.cpp
-        #MusicManager.h
+        HashTable.cpp
+        HashTable.h
+        library2.cpp
+        library2.h
+        List.cpp
+        List.h
+        #main_tests.cpp
+        main2.cpp
+        MusicManager.cpp
+        MusicManager.h
         )

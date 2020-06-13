@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Wet2_Structs"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Wet2_Structs">
+				<Option output="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Wet2_Structs.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/."/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 Wet2_Structs"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Wet2_Structs/fast">
+				<Option output="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Wet2_Structs.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/."/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 Wet2_Structs/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/Artist.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/Artist.h">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/AvlTree.h">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/HashTable.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/HashTable.h">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/List.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/List.h">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/MusicManager.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/MusicManager.h">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/library2.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/library2.h">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main2.cpp">
+			<Option target="Wet2_Structs"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
