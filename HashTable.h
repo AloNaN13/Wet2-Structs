@@ -1,4 +1,8 @@
 
+
+//MASTER
+
+
 #ifndef WET2_STRUCTS_HASHTABLE_H
 #define WET2_STRUCTS_HASHTABLE_H
 
