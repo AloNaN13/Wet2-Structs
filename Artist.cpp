@@ -11,20 +11,25 @@
 
 ArtistResult Artist::addSong(int song_id) {
     AvlTreeResult result=songs_tree.insert(0,song_id);
-    if(result==ARTIST_KEY_ALREADY_EXISTS){
+    if(result==AVL_KEY_ALREADY_EXISTS){
         return ARTIST_KEY_ALREADY_EXISTS;
     }
     //it was successfull
     total_num_of_songs++;
+    Pair new_pair(0,song_id);
+    streams_tree.insert(song_id,new_pair);
     return ARTIST_SUCCESS;
 }
 
 ArtistResult Artist::removeSong(int song_id) {
-    AvlTreeResult result=songs_tree.remove(song_id);
-    if(result==AVL_KEY_DOESNT_EXISTS){
-        return AVL_KEY_DOESNT_EXISTS;
+    int* current_streams_of_song=songs_tree.getElementptr(song_id);
+    if(current_streams_of_song== nullptr){//there is no such song under the artist
+        return ARTIST_KEY_DOESNT_EXISTS;
     }
-    //the remove was successfull
+    songs_tree.remove(song_id);
+    Pair pair_of_song(*current_streams_of_song,song_id);
+    streams_tree.remove(pair_of_song);
+    total_num_of_songs--;
     return ARTIST_SUCCESS;
 }
 
@@ -33,7 +38,20 @@ ArtistResult Artist::addToSongCount(int song_id, int count) {
     if(pre_count== nullptr){
        return AVL_KEY_DOESNT_EXISTS;
     }
-    *pre_count=+count;
+    Pair old_pair(*pre_count,song_id);
+    songs_tree.remove(song_id);
+    streams_tree.remove(old_pair);
+
+    Pair new_pair((*pre_count)+count,song_id);
+    songs_tree.insert((*pre_count)+count,song_id);
+    streams_tree.insert(song_id,new_pair);
+}
+
+ArtistResult Artist::getArtistBestSong(int *song_id) {
+    if(total_num_of_songs==0){
+        return ARTIST_FAILURE;
+    }
+    song_id=streams_tree.getLast();
 }
 
 /*

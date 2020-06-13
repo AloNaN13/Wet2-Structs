@@ -5,19 +5,21 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
+
 add_executable(
         Wet2_Structs
         #Artist.cpp
         #Artist.h
         AvlTree.h
-        HashTable.cpp
-        HashTable.h
-        library2.cpp
-        library2.h
-        List.cpp
-        List.h
-        #main_tests.cpp
-        main2.cpp
-        MusicManager.cpp
-        MusicManager.h
+        #HashTable.cpp
+        #HashTable.h
+        #library2.cpp
+        #library2.h
+        #List.cpp
+       # List.h
+        #main2.cpp
+        main_test.cpp
+       # MusicManager.cpp
+        #MusicManager.h
+
         )

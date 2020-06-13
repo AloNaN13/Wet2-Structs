@@ -29,12 +29,11 @@ public:
 };
 
 typedef enum ArtistResult_t{ARTIST_KEY_ALREADY_EXISTS,ARTIST_SUCCESS,ARTIST_ALLOCATION_ERROR
-    ,ARTIST_KEY_DOESNT_EXISTS
+    ,ARTIST_KEY_DOESNT_EXISTS, ARTIST_FAILURE
 }ArtistResult;
 class Artist {
 private:
-    ///ADD NOTE
-    ////NOTE 2
+
     int artist_id;
     int total_num_of_songs;
     AvlTree<int, int> songs_tree;
@@ -48,6 +47,7 @@ public:
     ArtistResult addSong(int song_id);
     ArtistResult removeSong(int song_id);
     ArtistResult addToSongCount(int song_id, int count);
+    ArtistResult getArtistBestSong(int* song_id);
 
 
     int GetTotalNumOfSongs() { return this->total_num_of_songs; };

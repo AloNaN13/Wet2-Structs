@@ -105,7 +105,7 @@ public:
         last= nullptr;
         iterator= nullptr;
     }
-    void printTreeInOrder(Node* startingNode);
+    //void printTreeInOrder(Node* startingNode);
     const Node* getRoot() const { return  root;}
 
 };
@@ -247,7 +247,7 @@ Element* AvlTree<Element,Key>::getFirst() {
  * @return -pointer to the data of the maximal Node in the tree, null_ptr if the tree is empty
  */
 template <class Element,class Key>
-Element* AvlTree<Element,Key>::getNext() {
+Element* AvlTree<Element,Key>::getLast() {
     if(root== nullptr){
         return nullptr;
     }
@@ -341,7 +341,7 @@ void AvlTree<Element,Key>:: fixHeightAfterInsert(Node& inserted_node){
         if(parent->right_son){
             parent->size_right_sub_tree=parent->right_son->size_sub_tree;
         }
-        ir(parent->left_son){
+        if (parent->left_son){
             parent->size_left_sub_tree=parent->left_son->size_sub_tree;
         }
         tmp=parent;

@@ -4,12 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/Artist.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/Artist.cpp.o"
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/HashTable.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/HashTable.cpp.o"
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/List.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/List.cpp.o"
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/MusicManager.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/MusicManager.cpp.o"
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/library2.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/library2.cpp.o"
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/main2.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/main2.cpp.o"
+  "C:/Users/User/CLionProjects/Mivne/ex2/Wet2-Structs/main_test.cpp" "C:/Users/User/CLionProjects/Mivne/ex2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir/main_test.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
