@@ -1,6 +1,5 @@
 
 
-//MASTER
 
 
 #ifndef WET2_STRUCTS_HASHTABLE_H
