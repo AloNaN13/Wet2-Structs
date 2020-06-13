@@ -33,6 +33,7 @@ typedef enum ArtistResult_t{ARTIST_KEY_ALREADY_EXISTS,ARTIST_SUCCESS,ARTIST_ALLO
 }ArtistResult;
 class Artist {
 private:
+    ///ADD NOTE
     int artist_id;
     int total_num_of_songs;
     AvlTree<int, int> songs_tree;
