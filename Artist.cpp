@@ -33,10 +33,11 @@ ArtistResult Artist::removeSong(int song_id) {
     return ARTIST_SUCCESS;
 }
 
-ArtistResult Artist::addToSongCount(int song_id, int count) {
+ArtistResult Artist::addToSongCount(int song_id, int count,int* initial_streams) {
     int* pre_count=songs_tree.getElementptr(key);
+    *initial_streams=*(songs_tree.getElementptr(key));
     if(pre_count== nullptr){
-       return AVL_KEY_DOESNT_EXISTS;
+        return ARTIST_KEY_DOESNT_EXISTS;
     }
     Pair old_pair(*pre_count,song_id);
     songs_tree.remove(song_id);
@@ -51,7 +52,7 @@ ArtistResult Artist::getArtistBestSong(int *song_id) {
     if(total_num_of_songs==0){
         return ARTIST_FAILURE;
     }
-    song_id=streams_tree.getLast();
+    *song_id=*(streams_tree.getLast());
 }
 
 /*

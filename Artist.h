@@ -46,7 +46,7 @@ public:
     Artist &operator=(const Artist &a) = default;
     ArtistResult addSong(int song_id);
     ArtistResult removeSong(int song_id);
-    ArtistResult addToSongCount(int song_id, int count);
+    ArtistResult addToSongCount(int song_id, int count,int* initial_streams);
     ArtistResult getArtistBestSong(int* song_id);
 
 

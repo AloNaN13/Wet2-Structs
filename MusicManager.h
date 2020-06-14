@@ -4,6 +4,8 @@
 #include "AvlTree.h"
 //#include "List.h"
 #include "Artist.h"
+#include "HashTable.h"
+
 
 class  TreeSet{
 private:
@@ -58,6 +60,7 @@ private:
 
     int total_num_of_songs;
     AvlTree<TreeSet, TreeSet> songs_of_system;
+    HashTable artists_in_system;
 
 
 public:
@@ -84,6 +87,41 @@ public:
     MMStatusType MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID);
 
 
+}
+
+MMStatusType MMStatusType MusicManager::MMAddToSongCount(int artistID, int song_ID, int count) {
+    if(artistID<=0||song_ID<=0||count<=0){
+        return MM_INVALID_INPUT;
+    }
+    Artist* wanted_artist=artists_in_system.hashFindNode(artistID);
+    if(wanted_artist== nullptr){
+        return MM_FAILURE;
+    }
+    int* pre_adding_streams;
+    ArtistResult result=wanted_artist->addToSongCount(song_ID,count,pre_adding_streams);
+    if(result==ARTIST_KEY_DOESNT_EXISTS){
+        return MM_FAILURE;
+    }
+    TreeSet preeThreeSet(*pre_adding_streams,artistID,song_ID);
+    songs_of_system.remove(preeThreeSet);
+    TreeSet after_adding_count(*pre_adding_streams+count,artistID,song_ID);
+    songs_of_system.insert(after_adding_count,after_adding_count);
+    return MM_SUCCESS;
+}
+
+
+MMStatusType MMStatusType MusicManager::MMGetArtistBestSong(int artistID, int *songID) {
+    if(artistID<=0||songID== nullptr){
+        return MM_INVALID_INPUT;
+    }
+    Artist* wanted_artist=artists_in_system.hashFindNode(artistID);
+    if(wanted_artist== nullptr){
+        return MM_FAILURE;
+    }
+    if(wanted_artist->GetTotalNumOfSongs()==0){
+        return MM_FAILURE;
+    }
+    wanted_artist->getArtistBestSong(songID);
 }
 
 MMStatusType MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID) {
