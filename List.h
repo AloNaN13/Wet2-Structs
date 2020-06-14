@@ -28,12 +28,12 @@ private:
 public:
     // the artist is created and deleted outside of the node
 
-    explicit ListNode(Artist* artist): artist(artist), prev_node(nullptr), next_node(nullptr) {};
+    explicit ListNode(Artist* artist): artist(artist), key(artist->GetArtistID()), prev_node(nullptr), next_node(nullptr) {};
     // another ctor? more parameter?
 
     ~ListNode() = default;
-    ListNode(const StreamListNode& node) = default;
-    ListNode& operator=(const StreamListNode& node) = default;
+    ListNode(const ListNode& node) = default;
+    ListNode& operator=(const ListNode& node) = default;
 
     int getNodeKey() { return this->key;};
     Artist* getArtistFromNode() { return this->artist;};
@@ -74,6 +74,8 @@ public:
     ListResult removeNodeFromList(ListNode* node_to_remove);
 
 };
+
+
 
 
 #endif //WET2_STRUCTS_LIST_H
