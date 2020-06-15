@@ -21,7 +21,8 @@ ArtistResult Artist::addSong(int song_id) {
     return ARTIST_SUCCESS;
 }
 
-ArtistResult Artist::removeSong(int song_id) {
+ArtistResult Artist::removeSong(int song_id, int* num_of_streams) {
+    *num_of_streams=*(songs_tree.getElementptr(song_id));
     int* current_streams_of_song=songs_tree.getElementptr(song_id);
     if(current_streams_of_song== nullptr){//there is no such song under the artist
         return ARTIST_KEY_DOESNT_EXISTS;
@@ -33,9 +34,9 @@ ArtistResult Artist::removeSong(int song_id) {
     return ARTIST_SUCCESS;
 }
 
-ArtistResult Artist::addToSongCount(int song_id, int count,int* initial_streams) {
-    int* pre_count=songs_tree.getElementptr(key);
-    *initial_streams=*(songs_tree.getElementptr(key));
+ArtistResult Artist::addToSongCount(int song_id, int count, int* initial_streams) {
+    int* pre_count=songs_tree.getElementptr(song_id);
+    *initial_streams=*(songs_tree.getElementptr(song_id));
     if(pre_count== nullptr){
         return ARTIST_KEY_DOESNT_EXISTS;
     }

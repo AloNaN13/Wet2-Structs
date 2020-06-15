@@ -2,18 +2,6 @@
 #include "library2.h"
 #include "MusicManager.h"
 
-
-
-
-
-
-
-
-
-
-
-/* Old Code from Wet1
-
 StatusType changeMMResultToStatusType(MMStatusType result){
     if(result==MM_SUCCESS){
         return SUCCESS;
@@ -34,50 +22,60 @@ StatusType changeMMResultToStatusType(MMStatusType result){
 }
 
 void* Init(){
-    MusicManager* DS=new MusicManager();
+    MusicManager* DS = new MusicManager();
     return (void*)DS;
 }
 
-StatusType AddArtist(void* DS, int artistID, int numOfSongs){
-    if(DS== nullptr){
+StatusType AddArtist(void* DS, int artistID){
+    if(DS == nullptr){
         return INVALID_INPUT;
     }
-    return changeMMResultToStatusType(((MusicManager*)DS)->MMAddArtist(artistID,numOfSongs));
+    return changeMMResultToStatusType(((MusicManager*)DS)->MMAddArtist(artistID));
 }
 
 StatusType RemoveArtist(void* DS, int artistID) {
-    if(DS== nullptr){
+    if(DS == nullptr){
         return INVALID_INPUT;
     }
     return changeMMResultToStatusType(((MusicManager*)DS)->MMRemoveArtist(artistID));
 }
 
-StatusType AddToSongCount(void* DS, int artistID, int songID){
-    if(DS== nullptr){
+StatusType AddSong(void *DS, int artistID, int songID){
+    if(DS == nullptr){
         return INVALID_INPUT;
     }
-    return changeMMResultToStatusType(((MusicManager*)DS)->MMAddToSongCount(artistID,songID));
+    return changeMMResultToStatusType(((MusicManager*)DS)->MMAddSong(artistID, songID));
 }
 
-StatusType NumberOfStreams(void* DS, int artistID, int songID, int* streams){
-    if(DS== nullptr){
+StatusType RemoveSong(void *DS, int artistID, int songID){
+    if(DS == nullptr){
         return INVALID_INPUT;
     }
-    return changeMMResultToStatusType(((MusicManager*)DS)->MMNumberOfStreams(artistID,songID,streams));
+    return changeMMResultToStatusType(((MusicManager*)DS)->MMRemoveSong(artistID, songID));
 }
 
-StatusType GetRecommendedSongs(void* DS, int numOfSongs, int* artists, int* songs){
-    if(DS== nullptr){
+StatusType AddToSongCount(void* DS, int artistID, int songID, int count){
+    if(DS == nullptr){
         return INVALID_INPUT;
     }
-    return changeMMResultToStatusType(((MusicManager*)DS)->MMgetRecommendedSongs(numOfSongs,artists,songs));
+    return changeMMResultToStatusType(((MusicManager*)DS)->MMAddToSongCount(artistID, songID, count));
+}
+
+StatusType GetArtistBestSong(void *DS, int artistID, int *songId){
+    if(DS == nullptr){
+        return INVALID_INPUT;
+    }
+    return changeMMResultToStatusType(((MusicManager*)DS)->MMGetArtistBestSong(artistID, songId));
+}
+
+StatusType GetRecommendedSongInPlace(void *DS, int rank, int *artistId, int *songId){
+    if(DS == nullptr){
+        return INVALID_INPUT;
+    }
+    return changeMMResultToStatusType(((MusicManager*)DS)->MMGetRecommendedSongInPlace(rank, artistId, songId));
 }
 
 void Quit(void**DS ){
     delete ((MusicManager*)(*DS));
     *DS= nullptr;
 }
-
-
-
- */

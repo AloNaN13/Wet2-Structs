@@ -1,7 +1,7 @@
 #ifndef WET1_STRUCTS_MUSICMANAGER_H
 #define WET1_STRUCTS_MUSICMANAGER_H
 
-#include "AvlTree.h"
+//#include "AvlTree.h"
 //#include "List.h"
 #include "Artist.h"
 #include "HashTable.h"
@@ -55,41 +55,164 @@ typedef enum MMStatusType_t{
 
 class MusicManager {
 private:
-    //Hash ARTIST
-
-
-    int total_num_of_songs;
-    AvlTree<TreeSet, TreeSet> songs_of_system;
     HashTable artists_in_system;
-
+    AvlTree<TreeSet, TreeSet> songs_of_system;
+    int total_num_of_artists;
+    int total_num_of_songs;
 
 public:
-    MusicManager() : total_num_of_songs(0) {};
-
+    MusicManager() : total_num_of_songs(0), total_num_of_songs(0) {}; // add hashtable and avltree?
     ~MusicManager() = default;
-
     MusicManager(const MusicManager &music_manager) = default;
-
     MusicManager &operator=(const MusicManager &music_manager) = default;
 
     MMStatusType MMAddArtist(int artistID);
-
     MMStatusType MMRemoveArtist(int artistID);
-
     MMStatusType MMAddSong(int artistID, int song_ID);
-
     MMStatusType MMRemoveSong(int artistID, int song_ID);
-
     MMStatusType MMAddToSongCount(int artistID, int song_ID, int count);
-
     MMStatusType MMGetArtistBestSong(int artistID, int *songID);
-
     MMStatusType MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID);
-
 
 }
 
-MMStatusType MMStatusType MusicManager::MMAddToSongCount(int artistID, int song_ID, int count) {
+
+
+
+MMStatusType MusicManager::MMAddArtist(int artistID){
+
+    try {
+        if (artistID <= 0) {
+            return MM_INVALID_INPUT;
+        }
+        if (this->artists_in_system.hashFindNode(artistID)) {
+            return MM_FAILURE;
+        }
+
+        if(this->total_num_of_artists>=this->artists_in_system.getHashTableSize()){
+            this->artists_in_system.expandHash();
+            // check hashResult?
+        }
+        if(this->total_num_of_artists<=(this->artists_in_system.getHashTableSize()/4)){
+            this->artists_in_system.shrinkHash();
+            // check hashResult?
+        }
+
+        Artist new artist_to_insert(artistID);
+        ListNode new node_to_insert(*artist_to_insert);
+        this->artists_in_system.hashInsertNode(*node_to_insert);
+        //check hashResult?
+
+        // put in IF statement if we check the Result
+        this->total_num_of_artists++;
+
+        return MM_SUCCESS;
+
+    }catch (...){
+        return MM_ALLOCATION_ERROR;
+    }
+
+}
+
+
+
+MMStatusType MusicManager::MMRemoveArtist(int artistID){
+
+    try {
+        if (artistID <= 0) {
+            return MM_INVALID_INPUT;
+        }
+        if (!(this->artists_in_system.hashFindNode(artistID)) ||
+            (this->artists_in_system.hashFindNode(artistID)->getArtistFromNode()->GetTotalNumOfSongs()>0)) {
+            return MM_FAILURE;
+        }
+
+        if(this->total_num_of_artists>=this->artists_in_system.getHashTableSize()){
+            this->artists_in_system.expandHash();
+            // check hashResult?
+        }
+        if(this->total_num_of_artists<=(this->artists_in_system.getHashTableSize()/4)){
+            this->artists_in_system.shrinkHash();
+            // check hashResult?
+        }
+
+        delete(this->artists_in_system.hashFindNode(artistID)->getArtistFromNode());
+        this->artists_in_system.hashRemoveNode(artistID);
+        //check hashResult?
+
+        this->total_num_of_artists--;
+        return MM_SUCCESS;
+
+    }catch (...){
+        return MM_ALLOCATION_ERROR;
+    }
+
+}
+
+MMStatusType MusicManager::MMAddSong(int artistID, int song_ID){
+
+    try {
+        if (artistID <= 0 || song_ID <= 0) {
+            return MM_INVALID_INPUT;
+        }
+        if (!(this->artists_in_system.hashFindNode(artistID)) ||
+            /* if a song with this songID exists*/) {
+            return MM_FAILURE;
+        }
+
+        // add song to artist
+        Artist* artist = this->artists_in_system.hashFindNode(artistID)->getArtistFromNode();
+        artist->addSong(song_ID);
+        // check RESULT?
+
+        // add song with 0 streams to songs_of_system
+        // CHECK WITH AVITAL IF CORRECT
+        TreeSet treeset_to_add(0, artistID, song_ID);
+        this->songs_of_system.insert(treeset_to_add, treeset_to_add);
+        // check RESULT?
+
+        this->total_num_of_songs++;
+        return MM_SUCCESS;
+
+    }catch (...){
+        return MM_ALLOCATION_ERROR;
+    }
+
+}
+
+MMStatusType MusicManager::MMRemoveSong(int artistID, int song_ID){
+
+    try {
+        if (artistID <= 0 || song_ID <= 0) {
+            return MM_INVALID_INPUT;
+        }
+        if (!(this->artists_in_system.hashFindNode(artistID)) ||
+            /* if a song with this songID doesn't exists*/) {
+            return MM_FAILURE;
+        }
+
+        // remove song from artist
+        Artist* artist = this->artists_in_system.hashFindNode(artistID)->getArtistFromNode();
+        int* num_of_streams;
+        artist->removeSong(song_ID, num_of_streams);
+        // check RESULT?
+
+        // remove song with from songs_of_system
+        // CHECK WITH AVITAL IF CORRECT
+        TreeSet treeset_to_remove(num_of_streams, artistID, song_ID);
+        this->songs_of_system.insert(treeset_to_remove, treeset_to_remove);
+        // check RESULT?
+
+        this->total_num_of_songs--;
+        return MM_SUCCESS;
+
+    }catch (...){
+        return MM_ALLOCATION_ERROR;
+    }
+
+}
+
+MMStatusType MusicManager::MMAddToSongCount(int artistID, int song_ID, int count) {
     if(artistID<=0||song_ID<=0||count<=0){
         return MM_INVALID_INPUT;
     }
@@ -110,22 +233,23 @@ MMStatusType MMStatusType MusicManager::MMAddToSongCount(int artistID, int song_
 }
 
 
-MMStatusType MMStatusType MusicManager::MMGetArtistBestSong(int artistID, int *songID) {
-    if(artistID<=0||songID== nullptr){
+MMStatusType MusicManager::MMGetArtistBestSong(int artistID, int *songID) {
+
+    if (artistID <= 0 || songID == nullptr) {
         return MM_INVALID_INPUT;
     }
-    Artist* wanted_artist=artists_in_system.hashFindNode(artistID);
-    if(wanted_artist== nullptr){
+    if (!(this->artists_in_system.hashFindNode(artistID)) ||
+        (this->artists_in_system.hashFindNode(artistID)->getArtistFromNode()->GetTotalNumOfSongs()<=0)) {
         return MM_FAILURE;
     }
-    if(wanted_artist->GetTotalNumOfSongs()==0){
-        return MM_FAILURE;
-    }
-    wanted_artist->getArtistBestSong(songID);
+
+    this->artists_in_system.hashFindNode(artistID)->getArtistFromNode()->getArtistBestSong(songID);
+    return MM_SUCCESS;
+
 }
 
-MMStatusType MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID) {
-    if(rank<=0 ||artist_ID== nullptr ||song_ID== nullptr){
+MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID) {
+    if(rank <=0 || artist_ID == nullptr || song_ID == nullptr){
         return MM_INVALID_INPUT;
     }
     if(rank>total_num_of_songs){
@@ -162,3 +286,5 @@ public:
 */
 
 #endif //WET1_STRUCTS_MUSICMANAGER_H
+
+

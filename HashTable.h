@@ -41,13 +41,14 @@ public:
     HashTable(const HashTable& hash) = delete; //implement?
     HashTable& operator=(const HashTable& hash) = delete; //implement?
 
+    int getHashTableSize() { return this->table_size;};
     int hashFunction(int key, int hash_for);
     ListNode* hashFindNode(int key);
     HashResult hashInsertNode(ListNode* node_to_insert);
-    HashResult hashDeleteNode(int key);
+    HashResult hashRemoveNode(int key);
 
-    HashTable* expandHash();
-    HashTable* shrinkHash();
+    HashResult expandHash();
+    HashResult shrinkHash();
 
     // printHash?
 
@@ -86,7 +87,7 @@ HashResult HashTable::hashInsertNode(ListNode* node_to_insert){
     return HASH_SUCCESS;
 }
 
-HashResult HashTable::hashDeleteNode(int key){
+HashResult HashTable::hashRemoveNode(int key){
     //get the hashed_key of the artist
     int hashed_key = hashFunction(key, REGULAR);
     ListNode* curr_node = table[hashed_key].getListFirstNode();
@@ -100,7 +101,7 @@ HashResult HashTable::hashDeleteNode(int key){
 }
 
 
-HashTable* HashTable::expandHash(){
+HashResult HashTable::expandHash(){
     List* new_table = new List[table_size*2];
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();
@@ -117,7 +118,7 @@ HashTable* HashTable::expandHash(){
     HashResult HASH_SUCCESS;
 }
 
-HashTable* HashTable::shrinkHash(){
+HashResult HashTable::shrinkHash(){
     List* new_table = new List[table_size/2];
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();

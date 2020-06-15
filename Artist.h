@@ -28,12 +28,17 @@ public:
     }
 };
 
-typedef enum ArtistResult_t{ARTIST_KEY_ALREADY_EXISTS,ARTIST_SUCCESS,ARTIST_ALLOCATION_ERROR
-    ,ARTIST_KEY_DOESNT_EXISTS, ARTIST_FAILURE
+typedef enum ArtistResult_t{
+    ARTIST_KEY_ALREADY_EXISTS,
+    ARTIST_SUCCESS,
+    ARTIST_ALLOCATION_ERROR,
+    ARTIST_KEY_DOESNT_EXISTS,
+    ARTIST_FAILURE
 }ArtistResult;
+
+
 class Artist {
 private:
-
     int artist_id;
     int total_num_of_songs;
     AvlTree<int, int> songs_tree;
@@ -45,8 +50,8 @@ public:
 
     Artist &operator=(const Artist &a) = default;
     ArtistResult addSong(int song_id);
-    ArtistResult removeSong(int song_id);
-    ArtistResult addToSongCount(int song_id, int count,int* initial_streams);
+    ArtistResult removeSong(int song_id, int* num_of_streams);
+    ArtistResult addToSongCount(int song_id, int count, int* initial_streams);
     ArtistResult getArtistBestSong(int* song_id);
 
 
