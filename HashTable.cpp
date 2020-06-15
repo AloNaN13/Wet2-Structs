@@ -8,7 +8,12 @@ int HashTable::hashFunction(int key, int hash_for){
     if(hash_for == SHRINK){
         return (key % (this->table_size/2));
     }
-    return (key % this->table_size);
+    if(hash_for == REGULAR){
+        return (key % this->table_size);
+    }
+
+    // doesnt get here
+    return 0;
 }
 
 ListNode* HashTable::hashFindNode(int key){

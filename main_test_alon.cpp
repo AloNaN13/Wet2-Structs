@@ -24,14 +24,14 @@ int main(){
     std::cout << "Added Artist 123 " << std::endl;
     Manager.MMAddArtist(456);
     std::cout << "Added Artist 456 " << std::endl;
-    //Manager.MMRemoveArtist(456);
-    //std::cout << "Removed Artist 456 " << std::endl;
-
-
     Manager.MMAddSong(123,7);
     std::cout << "Added song 7 to Artist 123 " << std::endl;
     Manager.MMAddSong(123,4);
     std::cout << "Added song 4 to Artist 123 " << std::endl;
+
+
+    Manager.MMRemoveArtist(456);
+    std::cout << "Removed Artist 456 " << std::endl;
 
 
 

@@ -11,14 +11,16 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
             return MM_FAILURE;
         }
 
-        if(this->total_num_of_artists>this->artists_in_system.getHashTableSize()){
+
+        if(this->total_num_of_artists > this->artists_in_system.getHashTableSize()){
             this->artists_in_system.expandHash();
             // check hashResult?
         }
-        else if(this->total_num_of_artists<(this->artists_in_system.getHashTableSize()/4)){
+        else if(this->total_num_of_artists < (this->artists_in_system.getHashTableSize()/4)){
             this->artists_in_system.shrinkHash();
             // check hashResult?
         }
+
 
         Artist* artist_to_insert = new Artist(artistID);
         ListNode* node_to_insert = new ListNode(artist_to_insert);
@@ -49,16 +51,19 @@ MMStatusType MusicManager::MMRemoveArtist(int artistID){
             return MM_FAILURE;
         }
 
-        if(this->total_num_of_artists>this->artists_in_system.getHashTableSize()){
+
+        if(this->total_num_of_artists > this->artists_in_system.getHashTableSize()){
             this->artists_in_system.expandHash();
             // check hashResult?
         }
-        else if(this->total_num_of_artists<(this->artists_in_system.getHashTableSize()/4)){
+        else if(this->total_num_of_artists < (this->artists_in_system.getHashTableSize()/4)){
             this->artists_in_system.shrinkHash();
             // check hashResult?
         }
 
-        delete(this->artists_in_system.hashFindNode(artistID)->getArtistFromNode());
+
+        // I Shouldnt delete here!!! it deletes in the node...
+        // delete(this->artists_in_system.hashFindNode(artistID)->getArtistFromNode());
         this->artists_in_system.hashRemoveNode(artistID);
         //check hashResult?
 
