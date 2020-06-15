@@ -19,14 +19,31 @@ public:
     Pair(int numStreams,int song_id):num_streams(numStreams),song_id(song_id){};
     ~Pair()= default;
     Pair(const Pair& pair)= default;
-    bool operator==(Pair& pair1){
-        return (this->song_id==pair1.song_id&&this->num_streams==pair1.num_streams);
+    int getNumStreams(){ return num_streams;};
+    int getSongID(){ return song_id;};
+    friend bool operator==(const Pair& pair1, const Pair& pair2);
+    /*{
+        return (this->song_id==pair1.getSongID()&&this->num_streams==pair1.getNumStreams());
+    }*/
+    bool operator< (const Pair& pair1)const {
+        if(num_streams<pair1.num_streams){
+            return true;
+        }
+        return (num_streams==pair1.num_streams&&song_id>pair1.song_id);
+        /*if(num_streams<pair1.getNumStreams()){ return true;}
+        return (num_streams==pair1.getNumStreams() &&song_id>pair1.getSongID());*/
     }
-    bool operator<(Pair& pair1){
-        if(num_streams<pair1.num_streams){ return true;}
-        return (num_streams==pair1.num_streams &&song_id>pair1.song_id);
+    bool operator>(const Pair& pair)const{
+        if(num_streams>pair.num_streams){
+            return true;
+        }
+        return (num_streams==pair.num_streams && song_id<pair.song_id);
     }
 };
+bool operator==(const Pair& pair1, const Pair& pair2){
+    return (pair1.song_id==pair2.song_id && pair1.num_streams==pair2.num_streams);
+}
+
 
 typedef enum ArtistResult_t{
     ARTIST_KEY_ALREADY_EXISTS,
@@ -53,6 +70,7 @@ public:
     ArtistResult removeSong(int song_id, int* num_of_streams);
     ArtistResult addToSongCount(int song_id, int count, int* initial_streams);
     ArtistResult getArtistBestSong(int* song_id);
+
 
 
     int GetTotalNumOfSongs() { return this->total_num_of_songs; };
