@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-
-
-add_executable(
-        Wet2_Structs
+add_executable(Wet2_Structs
         Artist.cpp
         Artist.h
         AvlTree.h
@@ -21,7 +18,4 @@ add_executable(
         #main2.cpp
         main_test.cpp
         MusicManager.cpp
-        MusicManager.h
-)
-
-
+        MusicManager.h)

@@ -19,11 +19,11 @@ public:
     Pair(int numStreams,int song_id):num_streams(numStreams),song_id(song_id){};
     ~Pair()= default;
     Pair(const Pair& pair)= default;
-    const int getNumStreams(){ return num_streams;};
-    const int getSongID(){ return song_id;};
+    int getNumStreams(){ return num_streams;};
+    int getSongID(){ return song_id;};
     //friend bool operator==(const Pair& pair1, const Pair& pair2) ;
     bool operator==(const Pair& pair)const {
-        return pair.getNumStreams() == num_streams && pair.getSongID() == song_id;
+        return pair.num_streams == num_streams && pair.song_id == song_id;
     }
 
     bool operator< (const Pair& pair1)const {

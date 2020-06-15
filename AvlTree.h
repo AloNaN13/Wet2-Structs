@@ -323,7 +323,7 @@ Element* AvlTree<Element,Key>::getElementptr(const Key &key) {
 template <class Element,class Key>
 Element* AvlTree<Element,Key>::getNodeInRank(int rank){
     if(rank<=0||rank>numOfNodes){
-        return AVL_FAILURE;
+        return nullptr;
     }
     int count=rank;
     Node* tmp=root;

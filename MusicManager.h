@@ -19,12 +19,14 @@ public:
     int getArtistID() { return artist_id;};
     int getSongID() { return song_id;};
     int getNumStreams() {return num_streams;};
-    bool operator==(/*const*/ TreeSet& treeSet){
-        return ( this->artist_id == treeSet.getArtistID() &&
+    bool operator==(const TreeSet& treeSet)const{
+        return (artist_id==treeSet.artist_id && song_id==treeSet.song_id
+                    &&num_streams==treeSet.num_streams);
+        /*return ( this->artist_id == treeSet.getArtistID() &&
                  this->song_id == treeSet.getSongID() &&
-                 this->num_streams == treeSet.getNumStreams());
+                 this->num_streams == treeSet.getNumStreams());*/
     }
-    bool operator<(const TreeSet& treeSet){
+    bool operator<(const TreeSet& treeSet)const {
         if(num_streams<treeSet.num_streams){
             return true;
         }
@@ -39,7 +41,7 @@ public:
         }
         return (song_id>treeSet.song_id);
     }
-    bool operator>(const TreeSet& treeSet){
+    bool operator>(const TreeSet& treeSet) const {
         if(num_streams>treeSet.num_streams){
             return true;
         }
