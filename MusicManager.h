@@ -12,7 +12,7 @@ private:
     int artist_id;
     int song_id;
 public:
-    TreeSet(int numStreams,int artist_id,int song_id):num_streams(numStreams),
+    TreeSet(int numStreams, int artist_id, int song_id):num_streams(numStreams),
                                                       artist_id(artist_id),song_id(song_id){};
     ~TreeSet()= default;
     TreeSet(const TreeSet& treeSet)= default;
@@ -56,12 +56,13 @@ typedef enum MMStatusType_t{
 class MusicManager {
 private:
     HashTable artists_in_system;
-    AvlTree<TreeSet, TreeSet> songs_of_system;
     int total_num_of_artists;
     int total_num_of_songs;
+    AvlTree<TreeSet, TreeSet> songs_of_system;
+
 
 public:
-    MusicManager() : total_num_of_songs(0), total_num_of_songs(0) {}; // add hashtable and avltree?
+    MusicManager() : artists_in_system(10),total_num_of_artists(0), total_num_of_songs(0) {}; // add hashtable and avltree?
     ~MusicManager() = default;
     MusicManager(const MusicManager &music_manager) = default;
     MusicManager &operator=(const MusicManager &music_manager) = default;
@@ -74,7 +75,7 @@ public:
     MMStatusType MMGetArtistBestSong(int artistID, int *songID);
     MMStatusType MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID);
 
-}
+};
 
 
 

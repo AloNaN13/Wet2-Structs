@@ -19,10 +19,10 @@ public:
     Pair(int numStreams,int song_id):num_streams(numStreams),song_id(song_id){};
     ~Pair()= default;
     Pair(const Pair& pair)= default;
-    operator==(Pair& pair1){
+    bool operator==(Pair& pair1){
         return (this->song_id==pair1.song_id&&this->num_streams==pair1.num_streams);
     }
-    operator<(Pair& pair1){
+    bool operator<(Pair& pair1){
         if(num_streams<pair1.num_streams){ return true;}
         return (num_streams==pair1.num_streams &&song_id>pair1.song_id);
     }

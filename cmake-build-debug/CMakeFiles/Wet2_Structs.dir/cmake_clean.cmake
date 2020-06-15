@@ -1,11 +1,12 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Wet2_Structs.dir/Artist.cpp.o"
-  "CMakeFiles/Wet2_Structs.dir/HashTable.cpp.o"
-  "CMakeFiles/Wet2_Structs.dir/List.cpp.o"
-  "CMakeFiles/Wet2_Structs.dir/MusicManager.cpp.o"
-  "CMakeFiles/Wet2_Structs.dir/library2.cpp.o"
-  "CMakeFiles/Wet2_Structs.dir/main_test.cpp.o"
+  "CMakeFiles/Wet2_Structs.dir/Artist.cpp.obj"
+  "CMakeFiles/Wet2_Structs.dir/HashTable.cpp.obj"
+  "CMakeFiles/Wet2_Structs.dir/List.cpp.obj"
+  "CMakeFiles/Wet2_Structs.dir/MusicManager.cpp.obj"
+  "CMakeFiles/Wet2_Structs.dir/library2.cpp.obj"
+  "CMakeFiles/Wet2_Structs.dir/main_test.cpp.obj"
   "Wet2_Structs.exe"
+  "Wet2_Structs.exe.manifest"
   "Wet2_Structs.pdb"
   "libWet2_Structs.dll.a"
 )
