@@ -11,7 +11,7 @@
 
 ArtistResult Artist::addSong(int song_id) {
     AvlTreeResult result=songs_tree.insert(0,song_id);
-    if(result==AVL_KEY_ALREADY_EXISTS){
+    if(result == AVL_KEY_ALREADY_EXISTS){
         return ARTIST_KEY_ALREADY_EXISTS;
     }
     //it was successfull
@@ -24,7 +24,7 @@ ArtistResult Artist::addSong(int song_id) {
 ArtistResult Artist::removeSong(int song_id, int* num_of_streams) {
     *num_of_streams=*(songs_tree.getElementptr(song_id));
     int* current_streams_of_song=songs_tree.getElementptr(song_id);
-    if(current_streams_of_song== nullptr){//there is no such song under the artist
+    if(current_streams_of_song == nullptr){//there is no such song under the artist
         return ARTIST_KEY_DOESNT_EXISTS;
     }
     songs_tree.remove(song_id);

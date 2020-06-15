@@ -99,9 +99,9 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
             // check hashResult?
         }
 
-        Artist new artist_to_insert(artistID);
-        ListNode new node_to_insert(*artist_to_insert);
-        this->artists_in_system.hashInsertNode(*node_to_insert);
+        Artist* artist_to_insert = new Artist(artistID));
+        ListNode* node_to_insert = new ListNode(artist_to_insert);
+        this->artists_in_system.hashInsertNode(node_to_insert);
         //check hashResult?
 
         // put in IF statement if we check the Result
@@ -156,21 +156,25 @@ MMStatusType MusicManager::MMAddSong(int artistID, int song_ID){
         if (artistID <= 0 || song_ID <= 0) {
             return MM_INVALID_INPUT;
         }
-        if (!(this->artists_in_system.hashFindNode(artistID)) ||
-            /* if a song with this songID exists*/) {
+        if (!(this->artists_in_system.hashFindNode(artistID))) {
             return MM_FAILURE;
         }
 
         // add song to artist
         Artist* artist = this->artists_in_system.hashFindNode(artistID)->getArtistFromNode();
-        artist->addSong(song_ID);
-        // check RESULT?
+        ArtistResult res = artist->addSong(song_ID);
+        if(res == ARTIST_KEY_ALREADY_EXISTS){
+            return MM_FAILURE;
+        }
 
         // add song with 0 streams to songs_of_system
         // CHECK WITH AVITAL IF CORRECT
         TreeSet treeset_to_add(0, artistID, song_ID);
-        this->songs_of_system.insert(treeset_to_add, treeset_to_add);
-        // check RESULT?
+
+        AvlTreeResult res2 = this->songs_of_system.insert(treeset_to_add, treeset_to_add);
+        if(res2 == AVL_KEY_ALREADY_EXISTS){
+            return MM_FAILURE;
+        }
 
         this->total_num_of_songs++;
         return MM_SUCCESS;
@@ -187,22 +191,25 @@ MMStatusType MusicManager::MMRemoveSong(int artistID, int song_ID){
         if (artistID <= 0 || song_ID <= 0) {
             return MM_INVALID_INPUT;
         }
-        if (!(this->artists_in_system.hashFindNode(artistID)) ||
-            /* if a song with this songID doesn't exists*/) {
+        if (!(this->artists_in_system.hashFindNode(artistID))) {
             return MM_FAILURE;
         }
 
         // remove song from artist
         Artist* artist = this->artists_in_system.hashFindNode(artistID)->getArtistFromNode();
         int* num_of_streams;
-        artist->removeSong(song_ID, num_of_streams);
-        // check RESULT?
+        ArtistResult res = artist->removeSong(song_ID, num_of_streams);
+        if(res == ARTIST_KEY_DOESNT_EXISTS){
+            return MM_FAILURE;
+        }
 
         // remove song with from songs_of_system
         // CHECK WITH AVITAL IF CORRECT
-        TreeSet treeset_to_remove(num_of_streams, artistID, song_ID);
-        this->songs_of_system.insert(treeset_to_remove, treeset_to_remove);
-        // check RESULT?
+        TreeSet treeset_to_remove(*num_of_streams, artistID, song_ID);
+        AvlTreeResult res2 = this->songs_of_system.remove(treeset_to_remove);
+        if(res2 == AVL_KEY_DOESNT_EXISTS){
+            return MM_FAILURE;
+        }
 
         this->total_num_of_songs--;
         return MM_SUCCESS;
