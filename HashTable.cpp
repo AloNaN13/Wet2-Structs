@@ -57,6 +57,7 @@ HashResult HashTable::expandHash(){
     }
     List* temp = this->table;
     this->table = new_table;
+    this->table_size = table_size*2;
     delete[] table;
 
     HashResult HASH_SUCCESS;
@@ -74,6 +75,7 @@ HashResult HashTable::shrinkHash(){
     }
     List* temp = this->table;
     this->table = new_table;
+    this->table_size = table_size/2;
     delete[] table;
 
     HashResult HASH_SUCCESS;
