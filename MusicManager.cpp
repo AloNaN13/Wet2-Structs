@@ -11,11 +11,11 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
             return MM_FAILURE;
         }
 
-        if(this->total_num_of_artists>=this->artists_in_system.getHashTableSize()){
+        if(this->total_num_of_artists>this->artists_in_system.getHashTableSize()){
             this->artists_in_system.expandHash();
             // check hashResult?
         }
-        if(this->total_num_of_artists<=(this->artists_in_system.getHashTableSize()/4)){
+        else if(this->total_num_of_artists<(this->artists_in_system.getHashTableSize()/4)){
             this->artists_in_system.shrinkHash();
             // check hashResult?
         }
