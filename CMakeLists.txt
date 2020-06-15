@@ -18,4 +18,5 @@ add_executable(Wet2_Structs
         #main2.cpp
         main_test.cpp
         MusicManager.cpp
-        MusicManager.h)
+        MusicManager.h
+        )
