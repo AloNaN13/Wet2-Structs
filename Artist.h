@@ -19,12 +19,13 @@ public:
     Pair(int numStreams,int song_id):num_streams(numStreams),song_id(song_id){};
     ~Pair()= default;
     Pair(const Pair& pair)= default;
-    int getNumStreams(){ return num_streams;};
-    int getSongID(){ return song_id;};
-    friend bool operator==(const Pair& pair1, const Pair& pair2);
-    /*{
-        return (this->song_id==pair1.getSongID()&&this->num_streams==pair1.getNumStreams());
-    }*/
+    const int getNumStreams(){ return num_streams;};
+    const int getSongID(){ return song_id;};
+    //friend bool operator==(const Pair& pair1, const Pair& pair2) ;
+    bool operator==(const Pair& pair)const {
+        return pair.getNumStreams() == num_streams && pair.getSongID() == song_id;
+    }
+
     bool operator< (const Pair& pair1)const {
         if(num_streams<pair1.num_streams){
             return true;
@@ -40,9 +41,11 @@ public:
         return (num_streams==pair.num_streams && song_id<pair.song_id);
     }
 };
-bool operator==(const Pair& pair1, const Pair& pair2){
-    return (pair1.song_id==pair2.song_id && pair1.num_streams==pair2.num_streams);
-}
+
+ /*bool Pair::  operator==(const Pair& pair1, const Pair& pair2)  {
+     return pair1.num_streams == pair2.num_streams && pair1.song_id == pair2.song_id;
+     //return ( (pair1.song_id==pair2.song_id && pair2.num_streams==pair2.num_streams));
+ }*/
 
 
 typedef enum ArtistResult_t{

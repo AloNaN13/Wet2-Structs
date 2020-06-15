@@ -39,6 +39,22 @@ public:
         }
         return (song_id>treeSet.song_id);
     }
+    bool operator>(const TreeSet& treeSet){
+        if(num_streams>treeSet.num_streams){
+            return true;
+        }
+        if(num_streams<treeSet.num_streams){
+            return  false;
+        }
+        if(artist_id<treeSet.artist_id){
+            return true;
+        }
+        if(artist_id>treeSet.artist_id){
+            return false;
+        }
+        return (song_id<treeSet.song_id);
+
+    }
 };
 
 
