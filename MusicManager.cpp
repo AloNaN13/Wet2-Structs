@@ -252,3 +252,4 @@ MMStatusType MusicManager:: MMgetRecommendedSongs( int numOfSongs, int* artists,
 
 }
 
+*/

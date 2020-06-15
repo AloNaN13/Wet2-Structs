@@ -6,8 +6,7 @@
 #include "Artist.h"
 #include "HashTable.h"
 
-
-class  TreeSet{
+class TreeSet{
 private:
     int num_streams;
     int artist_id;
@@ -17,14 +16,15 @@ public:
                                                       artist_id(artist_id),song_id(song_id){};
     ~TreeSet()= default;
     TreeSet(const TreeSet& treeSet)= default;
-    int getArtistID(){ return artist_id;};
-    int getSongID(){ return song_id;};
-    int getNumStreams{return num_Streams;};
-    operator==(const TreeSet& treeSet){
-        return ( this->artist_id==treeSet.artist_id&&
-                 this->song_id==treeSet.song_id&&this->num_streams==treeSet.num_streams);
+    int getArtistID() { return artist_id;};
+    int getSongID() { return song_id;};
+    int getNumStreams() {return num_streams;};
+    bool operator==(/*const*/ TreeSet& treeSet){
+        return ( this->artist_id == treeSet.getArtistID() &&
+                 this->song_id == treeSet.getSongID() &&
+                 this->num_streams == treeSet.getNumStreams());
     }
-    operator<(const TreeSet& treeSet){
+    bool operator<(const TreeSet& treeSet){
         if(num_streams<treeSet.num_streams){
             return true;
         }
@@ -216,10 +216,10 @@ MMStatusType MusicManager::MMAddToSongCount(int artistID, int song_ID, int count
     if(artistID<=0||song_ID<=0||count<=0){
         return MM_INVALID_INPUT;
     }
-    Artist* wanted_artist=artists_in_system.hashFindNode(artistID);
-    if(wanted_artist== nullptr){
+    if(this->artists_in_system.hashFindNode(artistID) == nullptr){
         return MM_FAILURE;
     }
+    Artist* wanted_artist=artists_in_system.hashFindNode(artistID)->getArtistFromNode();
     int* pre_adding_streams;
     ArtistResult result=wanted_artist->addToSongCount(song_ID,count,pre_adding_streams);
     if(result==ARTIST_KEY_DOESNT_EXISTS){
@@ -234,7 +234,6 @@ MMStatusType MusicManager::MMAddToSongCount(int artistID, int song_ID, int count
 
 
 MMStatusType MusicManager::MMGetArtistBestSong(int artistID, int *songID) {
-
     if (artistID <= 0 || songID == nullptr) {
         return MM_INVALID_INPUT;
     }
@@ -242,25 +241,32 @@ MMStatusType MusicManager::MMGetArtistBestSong(int artistID, int *songID) {
         (this->artists_in_system.hashFindNode(artistID)->getArtistFromNode()->GetTotalNumOfSongs()<=0)) {
         return MM_FAILURE;
     }
-
     this->artists_in_system.hashFindNode(artistID)->getArtistFromNode()->getArtistBestSong(songID);
     return MM_SUCCESS;
-
 }
 
 MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artist_ID, int *song_ID) {
     if(rank <=0 || artist_ID == nullptr || song_ID == nullptr){
         return MM_INVALID_INPUT;
     }
-    if(rank>total_num_of_songs){
+    if(rank > total_num_of_songs){
         return MM_FAILURE;
     }
     ///need to use rank of tree
-    TreeSet* wanted_rank=songs_of_system.getNodeInRank(rank);
-    *artist_ID=wanted_rank->getArtistID();
-    *song_ID=wanted_rank->getSongID();
+    TreeSet* wanted_rank = songs_of_system.getNodeInRank(rank);
+    *artist_ID = wanted_rank->getArtistID();
+    *song_ID = wanted_rank->getSongID();
     return MM_SUCCESS;
 }
+
+#endif //WET1_STRUCTS_MUSICMANAGER_H
+
+
+
+
+
+
+// OLD MM CODE FROM WET1
 
 /*
 class MusicManager{
@@ -284,7 +290,5 @@ public:
 
 };
 */
-
-#endif //WET1_STRUCTS_MUSICMANAGER_H
 
 

@@ -9,7 +9,7 @@
 #define WET1_STRUCTS_ARTIST_H
 
 #include "AvlTree.h"
-#include "List.h"
+//#include "List.h"
 
 class  Pair{
 private:
@@ -37,7 +37,7 @@ typedef enum ArtistResult_t{
 }ArtistResult;
 
 
-class Artist {
+class Artist{
 private:
     int artist_id;
     int total_num_of_songs;
@@ -59,7 +59,7 @@ public:
     int GetArtistID() { return this->artist_id; };
 
 
-}
+};
 
 /*
 

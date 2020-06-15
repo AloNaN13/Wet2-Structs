@@ -9,19 +9,19 @@ include_directories(.)
 
 add_executable(
         Wet2_Structs
-        #Artist.cpp
-        #Artist.h
+        Artist.cpp
+        Artist.h
         AvlTree.h
-        #HashTable.cpp
-        #HashTable.h
-        #library2.cpp
-        #library2.h
-        #List.cpp
-       # List.h
+        HashTable.cpp
+        HashTable.h
+        library2.cpp
+        library2.h
+        List.cpp
+        List.h
         #main2.cpp
         main_test.cpp
-       # MusicManager.cpp
-        #MusicManager.h
+        MusicManager.cpp
+        MusicManager.h
 )
 
 

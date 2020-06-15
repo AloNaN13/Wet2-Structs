@@ -90,3 +90,5 @@ StreamListNode* Artist::GetSongNumOfStreamsNode(int song_id) {
 void Artist::SetStreamsNumForSong(int song_id, StreamListNode* node){
     full_songs_list[song_id] = node;
 }
+
+*/

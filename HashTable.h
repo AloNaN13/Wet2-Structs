@@ -9,7 +9,7 @@
 
 #include "List.h"
 
-typedef enum hash_for_t{
+enum{
     REGULAR,
     EXPAND,
     SHRINK
@@ -59,12 +59,12 @@ public:
 
 int HashTable::hashFunction(int key, int hash_for){
     if(hash_for == EXPAND){
-        return (key % (this.table_size*2));
+        return (key % (this->table_size*2));
     }
     if(hash_for == SHRINK){
-        return (key % (this.table_size/2));
+        return (key % (this->table_size/2));
     }
-    return (key % this.table_size);
+    return (key % this->table_size);
 }
 
 ListNode* HashTable::hashFindNode(int key){
@@ -106,8 +106,8 @@ HashResult HashTable::expandHash(){
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();
         for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
-            node_to_insert(*curr_node);
-            int hashed_key = hashFunction(node_to_insert->getArtistFromNode()->GetArtistID(), EXPAND);
+            ListNode node_to_insert(*curr_node);
+            int hashed_key = hashFunction(node_to_insert.getArtistFromNode()->GetArtistID(), EXPAND);
             new_table[hashed_key].insertNodeToList(&node_to_insert);
         }
     }
@@ -123,8 +123,8 @@ HashResult HashTable::shrinkHash(){
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();
         for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
-            node_to_insert(*curr_node);
-            int hashed_key = hashFunction(node_to_insert->getArtistFromNode()->GetArtistID(), SHRINK);
+            ListNode node_to_insert(*curr_node);
+            int hashed_key = hashFunction(node_to_insert.getArtistFromNode()->GetArtistID(), SHRINK);
             new_table[hashed_key].insertNodeToList(&node_to_insert);
         }
     }
