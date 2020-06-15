@@ -21,9 +21,17 @@ int main(){
     //void* Manager = Init();
     std::cout << "INIT SUCCESS " << std::endl;
     Manager.MMAddArtist(123);
-    std::cout << "Added first Artist " << std::endl;
+    std::cout << "Added Artist 123 " << std::endl;
     Manager.MMAddArtist(456);
-    std::cout << "Added second Artist " << /*(MusicManager*)Manager. <<*/ std::endl;
+    std::cout << "Added Artist 456 " << std::endl;
+    //Manager.MMRemoveArtist(456);
+    //std::cout << "Removed Artist 456 " << std::endl;
+
+
+    Manager.MMAddSong(123,7);
+    std::cout << "Added song 7 to Artist 123 " << std::endl;
+    Manager.MMAddSong(123,4);
+    std::cout << "Added song 4 to Artist 123 " << std::endl;
 
 
 

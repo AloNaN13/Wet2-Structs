@@ -21,14 +21,14 @@ typedef enum ListResult_t{
 
 class ListNode{
 private:
-    const int& key;
+    const int key;
     Artist* artist;
     ListNode* prev_node;
     ListNode* next_node;
 public:
     // the artist is created and deleted outside of the node
 
-    explicit ListNode(Artist* artist): artist(artist), key(artist->GetArtistID()), prev_node(nullptr), next_node(nullptr) {};
+    explicit ListNode(Artist* artist): key(artist->GetArtistID()), artist(artist), prev_node(nullptr), next_node(nullptr) {};
     // another ctor? more parameter?
 
     ~ListNode() { delete(artist);};
