@@ -91,7 +91,7 @@ public:
     MMStatusType MMGetRecommendedSongInPlace(int rank, int *artistId, int *songId);
 
     //FOR CHECK
-    HashTable& getArtistsInSystem(){ return this->artists_in_system;};
+    //HashTable& getArtistsInSystem(){ return this->artists_in_system;};
 };
 
 

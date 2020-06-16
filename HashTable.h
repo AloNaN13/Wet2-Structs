@@ -52,7 +52,7 @@ public:
 
     // printHash?
     // FOR CHECK
-    List& getIndexOfTable(){ return table[3];};
+    //List& getIndexOfTable(){ return table[3];};
 
 
 };

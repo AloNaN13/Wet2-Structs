@@ -21,17 +21,17 @@ int main(){
 
 
 
-/*
+
     //Sari's Test
     MM_test();
 
-*/
 
 
+/*
 
-    int best_song;
-    int third_artist;
-    int third_song;
+    int best_song = 0;
+    int third_artist = 0;
+    int third_song = 0;
 
     MusicManager Manager;
     //void* Manager = Init();
@@ -66,7 +66,7 @@ int main(){
     std::cout << "3 rank is: Artist " << third_artist << " Song " << third_song << std::endl;
 
 
-
+*/
 
     /*
     Init
