@@ -18,5 +18,6 @@ add_executable(Wet2_Structs
         #main2.cpp
         #main_test.cpp
         main_test_alon.cpp
+        #MM_tests_sari
         MusicManager.cpp
         MusicManager.h)

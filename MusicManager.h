@@ -90,6 +90,8 @@ public:
     MMStatusType MMGetArtistBestSong(int artistID, int *songId);
     MMStatusType MMGetRecommendedSongInPlace(int rank, int *artistId, int *songId);
 
+    //FOR CHECK
+    //HashTable& getArtistsInSystem(){ return this->artists_in_system;};
 };
 
 

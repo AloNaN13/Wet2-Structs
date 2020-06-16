@@ -43,6 +43,10 @@ int main(){
     std::cout << "Added 5 counts to Artist 123 song 4 " << std::endl;
 
 
+
+    //List index1OfTable = Manager.getArtistsInSystem().getIndex1OfTable();
+
+
     Manager.MMGetArtistBestSong(123, &best_song);
     std::cout << "Artist 123 best song is " << best_song << " (should be 4) " << std::endl;
 

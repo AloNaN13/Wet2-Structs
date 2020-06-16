@@ -51,6 +51,9 @@ public:
     HashResult shrinkHash();
 
     // printHash?
+    // FOR CHECK
+    //List& getIndex1OfTable(){ return table[1];};
+
 
 };
 
