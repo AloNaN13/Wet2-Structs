@@ -37,26 +37,11 @@ public:
                  this->num_streams == treeSet.getNumStreams());*/
     }
     bool operator<(const TreeSet& treeSet)const {
-        if(num_streams<treeSet.num_streams){
-            return true;
-        }
-        if(num_streams>treeSet.num_streams){
-            return false;
-        }
-        if(artist_id>treeSet.artist_id){
-            return true;
-        }
-        if(artist_id<treeSet.artist_id){
-            return false;
-        }
-        return (song_id>treeSet.song_id);
-    }
-    bool operator>(const TreeSet& treeSet) const {
         if(num_streams>treeSet.num_streams){
             return true;
         }
         if(num_streams<treeSet.num_streams){
-            return  false;
+            return false;
         }
         if(artist_id<treeSet.artist_id){
             return true;
@@ -65,6 +50,21 @@ public:
             return false;
         }
         return (song_id<treeSet.song_id);
+    }
+    bool operator>(const TreeSet& treeSet) const {
+        if(num_streams<treeSet.num_streams){
+            return true;
+        }
+        if(num_streams>treeSet.num_streams){
+            return  false;
+        }
+        if(artist_id>treeSet.artist_id){
+            return true;
+        }
+        if(artist_id<treeSet.artist_id){
+            return false;
+        }
+        return (song_id>treeSet.song_id);
 
     }
 };
