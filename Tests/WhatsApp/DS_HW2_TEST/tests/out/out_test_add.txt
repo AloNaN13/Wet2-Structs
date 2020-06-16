@@ -1,0 +1,72 @@
+quit done.
+init done.
+quit done.
+init done.
+init was already called.
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: INVALID_INPUT
+GetRecommendedSongInPlace: INVALID_INPUT
+AddArtist: SUCCESS
+GetRecommendedSongInPlace: FAILURE
+AddArtist: FAILURE
+AddArtist: INVALID_INPUT
+AddArtist: SUCCESS
+AddArtist: FAILURE
+AddSong: SUCCESS
+GetRecommendedSongInPlace: Artist 123 Song 7
+GetRecommendedSongInPlace: FAILURE
+AddSong: FAILURE
+AddSong: SUCCESS
+AddSong: INVALID_INPUT
+AddSong: INVALID_INPUT
+AddSong: INVALID_INPUT
+AddSong: INVALID_INPUT
+AddSong: FAILURE
+RemoveArtist: FAILURE
+RemoveArtist: INVALID_INPUT
+RemoveArtist: FAILURE
+RemoveSong: SUCCESS
+RemoveArtist: SUCCESS
+AddArtist: SUCCESS
+AddSong: SUCCESS
+AddToSongCount: FAILURE
+GetArtistBestSong: 7
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: Artist 123 Song 7
+GetRecommendedSongInPlace: Artist 456 Song 1
+AddToSongCount: INVALID_INPUT
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+GetRecommendedSongInPlace: Artist 123 Song 7
+GetRecommendedSongInPlace: Artist 456 Song 1
+GetRecommendedSongInPlace: Artist 456 Song 2
+GetRecommendedSongInPlace: Artist 456 Song 3
+GetRecommendedSongInPlace: Artist 456 Song 4
+AddToSongCount: SUCCESS
+GetRecommendedSongInPlace: Artist 123 Song 7
+AddToSongCount: SUCCESS
+GetRecommendedSongInPlace: Artist 123 Song 7
+GetRecommendedSongInPlace: Artist 456 Song 5
+GetRecommendedSongInPlace: Artist 456 Song 1
+GetRecommendedSongInPlace: Artist 456 Song 2
+GetRecommendedSongInPlace: Artist 456 Song 3
+GetRecommendedSongInPlace: Artist 456 Song 4
+AddToSongCount: SUCCESS
+GetRecommendedSongInPlace: Artist 456 Song 5
+GetRecommendedSongInPlace: Artist 123 Song 7
+GetRecommendedSongInPlace: Artist 456 Song 1
+GetRecommendedSongInPlace: Artist 456 Song 2
+GetRecommendedSongInPlace: Artist 456 Song 3
+GetRecommendedSongInPlace: Artist 456 Song 4
+AddToSongCount: SUCCESS
+GetRecommendedSongInPlace: Artist 456 Song 2
+GetRecommendedSongInPlace: Artist 456 Song 5
+GetArtistBestSong: 2
+RemoveSong: SUCCESS
+GetRecommendedSongInPlace: Artist 456 Song 5
+GetRecommendedSongInPlace: Artist 123 Song 7
+GetArtistBestSong: 5
+quit done.
+quit done.

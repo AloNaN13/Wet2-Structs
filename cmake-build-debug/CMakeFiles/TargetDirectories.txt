@@ -1,3 +1,3 @@
-C:/Users/User/CLionProjects/Mivne/ex2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir
-C:/Users/User/CLionProjects/Mivne/ex2/Wet2-Structs/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/User/CLionProjects/Mivne/ex2/Wet2-Structs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/Wet2_Structs.dir
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug/CMakeFiles/edit_cache.dir

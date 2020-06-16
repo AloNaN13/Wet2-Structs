@@ -1,0 +1,114 @@
+init done.
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+GetArtistBestSong: 1
+GetArtistBestSong: FAILURE
+AddSong: SUCCESS
+GetArtistBestSong: 1
+RemoveArtist: FAILURE
+GetRecommendedSongInPlace: Artist 1 Song 1
+GetRecommendedSongInPlace: Artist 2 Song 1
+GetRecommendedSongInPlace: Artist 3 Song 1
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+AddToSongCount: SUCCESS
+AddToSongCount: FAILURE
+AddToSongCount: FAILURE
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+GetArtistBestSong: 1
+GetArtistBestSong: 3
+GetRecommendedSongInPlace: Artist 1 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 1
+GetRecommendedSongInPlace: Artist 3 Song 1
+GetRecommendedSongInPlace: Artist 2 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 1
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+RemoveArtist: FAILURE
+RemoveSong: SUCCESS
+AddToSongCount: FAILURE
+GetArtistBestSong: FAILURE
+RemoveArtist: SUCCESS
+GetRecommendedSongInPlace: Artist 1 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 1
+GetRecommendedSongInPlace: Artist 2 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 1
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+GetRecommendedSongInPlace: Artist 1 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 1
+GetRecommendedSongInPlace: Artist 2 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 1
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+GetRecommendedSongInPlace: Artist 1 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 1
+GetRecommendedSongInPlace: Artist 2 Song 3
+GetRecommendedSongInPlace: Artist 2 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 2
+GetRecommendedSongInPlace: Artist 1 Song 1
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+GetRecommendedSongInPlace: FAILURE
+GetArtistBestSong: 3
+GetArtistBestSong: 1
+quit done.

@@ -1,18 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\User\CLionProjects\Mivne\ex2\Wet2-Structs
--- The C compiler identification is GNU 5.1.0
--- The CXX compiler identification is GNU 5.1.0
--- Check for working C compiler: C:/TDM-GCC-64/bin/gcc.exe
--- Check for working C compiler: C:/TDM-GCC-64/bin/gcc.exe -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: C:/TDM-GCC-64/bin/g++.exe
--- Check for working CXX compiler: C:/TDM-GCC-64/bin/g++.exe -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
+C:\Users\User\.CLion2019.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/User/CLionProjects/Mivne/ex2/Wet2-Structs/cmake-build-debug
+-- Build files have been written to: /cygdrive/c/CS_Technion/234218-Data_Structures_1/Wet2/Wet2-Structs/cmake-build-debug

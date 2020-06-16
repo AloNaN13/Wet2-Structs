@@ -1,3 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Wet2_Structs.dir/objects.a
-C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\Wet2_Structs.dir/objects.a @CMakeFiles\Wet2_Structs.dir\objects1.rsp
-C:\TDM-GCC-64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Wet2_Structs.dir/objects.a -Wl,--no-whole-archive  -o Wet2_Structs.exe -Wl,--out-implib,libWet2_Structs.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Wet2_Structs.dir\linklibs.rsp
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/Wet2_Structs.dir/Artist.cpp.o CMakeFiles/Wet2_Structs.dir/HashTable.cpp.o CMakeFiles/Wet2_Structs.dir/library2.cpp.o CMakeFiles/Wet2_Structs.dir/List.cpp.o CMakeFiles/Wet2_Structs.dir/main_test_alon.cpp.o CMakeFiles/Wet2_Structs.dir/MusicManager.cpp.o  -o Wet2_Structs.exe -Wl,--out-implib,libWet2_Structs.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
