@@ -40,12 +40,16 @@ ArtistResult Artist::addToSongCount(int song_id, int count, int* initial_streams
     if(pre_count== nullptr){
         return ARTIST_KEY_DOESNT_EXISTS;
     }
-    Pair old_pair(*pre_count,song_id);
+    int pre=*pre_count;
+
+    Pair old_pair(pre,song_id);
+
     songs_tree.remove(song_id);
     streams_tree.remove(old_pair);
 
-    Pair new_pair((*pre_count)+count,song_id);
-    songs_tree.insert((*pre_count)+count,song_id);
+
+    Pair new_pair(pre+count,song_id);
+    songs_tree.insert(pre+count,song_id);
     streams_tree.insert(song_id,new_pair);
 }
 
