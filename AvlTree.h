@@ -331,13 +331,14 @@ Element* AvlTree<Element,Key>::getNodeInRank(int rank){
         if(tmp->size_left_sub_tree==count-1){
             return &tmp->data;
         }
-        if(tmp->size_left_sub_tree>count-1){
+        else if(tmp->size_left_sub_tree>count-1){
             tmp=tmp->left_son;
         }
-        count=count-1-tmp->size_left_sub_tree;
-        tmp=tmp->right_son;
+        else{
+            count=count-1-tmp->size_left_sub_tree;
+            tmp=tmp->right_son;
+        }
     }
-
 }
 
 
