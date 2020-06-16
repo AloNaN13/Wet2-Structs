@@ -17,6 +17,7 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
         this->artists_in_system.hashInsertNode(node_to_insert);
         //check hashResult?
 
+        this->total_num_of_artists++;
         //expand the hash table if needed
         if(this->total_num_of_artists == this->artists_in_system.getHashTableSize()){
             this->artists_in_system.expandHash();
@@ -24,7 +25,6 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
         }
 
         // put in IF statement if we check the Result
-        this->total_num_of_artists++;
 
         return MM_SUCCESS;
 
@@ -51,13 +51,13 @@ MMStatusType MusicManager::MMRemoveArtist(int artistID){
         this->artists_in_system.hashRemoveNode(artistID);
         //check hashResult?
 
+        this->total_num_of_artists--;
         //shrink the hash table if needed
         if(this->total_num_of_artists == (this->artists_in_system.getHashTableSize()/4)){
             this->artists_in_system.shrinkHash();
             // check hashResult?
         }
 
-        this->total_num_of_artists--;
         return MM_SUCCESS;
 
     }catch (...){
