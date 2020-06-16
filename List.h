@@ -31,7 +31,7 @@ public:
     explicit ListNode(Artist* artist): key(artist->GetArtistID()), artist(artist), prev_node(nullptr), next_node(nullptr) {};
     // another ctor? more parameter?
 
-    ~ListNode() { delete(artist);};
+    ~ListNode() = default;//{ delete(artist);};
     ListNode(const ListNode& node) = default;
     ListNode& operator=(const ListNode& node) = default;
 
@@ -60,7 +60,7 @@ private:
 
 public:
     List(): list_size(0), first_node(nullptr), last_node(nullptr) {};
-    ~List(); // implement?
+    ~List();
     List(const List& other_list) = default;
     List& operator=(const List& list) = default;
 

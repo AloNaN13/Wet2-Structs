@@ -55,15 +55,15 @@ HashResult HashTable::expandHash(){
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();
         for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
-            ListNode node_to_insert(*curr_node);
-            int hashed_key = hashFunction(node_to_insert.getArtistFromNode()->GetArtistID(), EXPAND);
-            new_table[hashed_key].insertNodeToList(&node_to_insert);
+            ListNode* node_to_insert = new ListNode(*curr_node);
+            int hashed_key = hashFunction(node_to_insert->getArtistFromNode()->GetArtistID(), EXPAND);
+            new_table[hashed_key].insertNodeToList(node_to_insert);
         }
     }
     List* temp = this->table;
     this->table = new_table;
     this->table_size = table_size*2;
-    delete[] table;
+    delete[] temp;
 
     HashResult HASH_SUCCESS;
 }
@@ -73,15 +73,15 @@ HashResult HashTable::shrinkHash(){
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();
         for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
-            ListNode node_to_insert(*curr_node);
-            int hashed_key = hashFunction(node_to_insert.getArtistFromNode()->GetArtistID(), SHRINK);
-            new_table[hashed_key].insertNodeToList(&node_to_insert);
+            ListNode* node_to_insert = new ListNode(*curr_node);
+            int hashed_key = hashFunction(node_to_insert->getArtistFromNode()->GetArtistID(), SHRINK);
+            new_table[hashed_key].insertNodeToList(node_to_insert);
         }
     }
     List* temp = this->table;
     this->table = new_table;
     this->table_size = table_size/2;
-    delete[] table;
+    delete[] temp;
 
     HashResult HASH_SUCCESS;
 

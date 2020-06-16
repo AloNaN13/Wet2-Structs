@@ -12,11 +12,12 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
         }
 
 
-        if(this->total_num_of_artists > this->artists_in_system.getHashTableSize()){
+        if(this->total_num_of_artists == this->artists_in_system.getHashTableSize()){
             this->artists_in_system.expandHash();
             // check hashResult?
         }
-        else if(this->total_num_of_artists < (this->artists_in_system.getHashTableSize()/4)){
+        else if(this->total_num_of_artists == (this->artists_in_system.getHashTableSize()/4)
+                && this->artists_in_system.getHashTableSize()>=4){
             this->artists_in_system.shrinkHash();
             // check hashResult?
         }
@@ -52,18 +53,17 @@ MMStatusType MusicManager::MMRemoveArtist(int artistID){
         }
 
 
-        if(this->total_num_of_artists > this->artists_in_system.getHashTableSize()){
+        if(this->total_num_of_artists == this->artists_in_system.getHashTableSize()){
             this->artists_in_system.expandHash();
             // check hashResult?
         }
-        else if(this->total_num_of_artists < (this->artists_in_system.getHashTableSize()/4)){
+        else if(this->total_num_of_artists == (this->artists_in_system.getHashTableSize()/4)){
             this->artists_in_system.shrinkHash();
             // check hashResult?
         }
 
 
-        // I Shouldnt delete here!!! it deletes in the node...
-        // delete(this->artists_in_system.hashFindNode(artistID)->getArtistFromNode());
+        delete(this->artists_in_system.hashFindNode(artistID)->getArtistFromNode());
         this->artists_in_system.hashRemoveNode(artistID);
         //check hashResult?
 
@@ -154,14 +154,14 @@ MMStatusType MusicManager::MMAddToSongCount(int artistID, int songID, int count)
         return MM_FAILURE;
     }
     Artist* wanted_artist=artists_in_system.hashFindNode(artistID)->getArtistFromNode();
-    int* pre_adding_streams;
-    ArtistResult result=wanted_artist->addToSongCount(songID,count,pre_adding_streams);
+    int pre_adding_streams = 0;
+    ArtistResult result=wanted_artist->addToSongCount(songID,count,&pre_adding_streams);
     if(result==ARTIST_KEY_DOESNT_EXISTS){
         return MM_FAILURE;
     }
-    TreeSet preeThreeSet(*pre_adding_streams,artistID,songID);
+    TreeSet preeThreeSet(pre_adding_streams,artistID,songID);
     songs_of_system.remove(preeThreeSet);
-    TreeSet after_adding_count(*pre_adding_streams+count,artistID,songID);
+    TreeSet after_adding_count(pre_adding_streams+count,artistID,songID);
     songs_of_system.insert(after_adding_count,after_adding_count);
     return MM_SUCCESS;
 }
