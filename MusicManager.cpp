@@ -12,22 +12,17 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
         }
 
 
-        if(this->total_num_of_artists == this->artists_in_system.getHashTableSize()){
-            this->artists_in_system.expandHash();
-            // check hashResult?
-        }
-        else if(this->total_num_of_artists == (this->artists_in_system.getHashTableSize()/4)
-                && this->artists_in_system.getHashTableSize()>=4){
-            this->artists_in_system.shrinkHash();
-            // check hashResult?
-        }
-
-
         Artist* artist_to_insert = new Artist(artistID);
         ListNode* node_to_insert = new ListNode(artist_to_insert);
         this->artists_in_system.hashInsertNode(node_to_insert);
         //check hashResult?
 
+        //expand the hash table if needed
+        if(this->total_num_of_artists == this->artists_in_system.getHashTableSize()){
+            this->artists_in_system.expandHash();
+            // check hashResult?
+        }
+        
         // put in IF statement if we check the Result
         this->total_num_of_artists++;
 
@@ -52,20 +47,15 @@ MMStatusType MusicManager::MMRemoveArtist(int artistID){
             return MM_FAILURE;
         }
 
-
-        if(this->total_num_of_artists == this->artists_in_system.getHashTableSize()){
-            this->artists_in_system.expandHash();
-            // check hashResult?
-        }
-        else if(this->total_num_of_artists == (this->artists_in_system.getHashTableSize()/4)){
-            this->artists_in_system.shrinkHash();
-            // check hashResult?
-        }
-
-
         delete(this->artists_in_system.hashFindNode(artistID)->getArtistFromNode());
         this->artists_in_system.hashRemoveNode(artistID);
         //check hashResult?
+
+        //shrink the hash table if needed
+        if(this->total_num_of_artists == (this->artists_in_system.getHashTableSize()/4)){
+            this->artists_in_system.shrinkHash();
+            // check hashResult?
+        }
 
         this->total_num_of_artists--;
         return MM_SUCCESS;

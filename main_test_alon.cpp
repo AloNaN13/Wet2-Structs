@@ -15,7 +15,15 @@
 #include "library2.h"
 #include "MusicManager.h"
 
+#include "MM_tests_sari.h"
+
 int main(){
+
+
+    /*
+    //Sari's Test
+    MM_test();
+*/
 
     int best_song;
     int third_artist;
@@ -52,6 +60,7 @@ int main(){
 
     Manager.MMGetRecommendedSongInPlace(3,&third_artist,&third_song);
     std::cout << "3 rank is: Artist " << third_artist << " Song " << third_song << std::endl;
+
 
 
     /*
