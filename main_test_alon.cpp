@@ -36,10 +36,9 @@ int main(){
 
 void general1(){
 
-    int bestSong2 = 0;
-    int bestSong3 = 0;
-    int rank1artist = 0;
-    int rank1song = 0;
+    int bestSong = 0;
+    int rankXartist = 0;
+    int rankXsong = 0;
 
     MusicManager Manager;
     Manager.MMAddArtist(1);
@@ -53,16 +52,22 @@ void general1(){
     Manager.MMAddSong(2,1);
     Manager.MMAddSong(2,2);
     Manager.MMAddSong(2,3);
-    Manager.MMGetArtistBestSong(2,&bestSong2);
-    Manager.MMGetArtistBestSong(3,&bestSong3);
+    Manager.MMGetArtistBestSong(2,&bestSong);
+    Manager.MMGetArtistBestSong(3,&bestSong);
     Manager.MMAddSong(3,1);
-    Manager.MMGetArtistBestSong(3,&bestSong3);
+    Manager.MMGetArtistBestSong(3,&bestSong);
     Manager.MMRemoveArtist(3);
+    Manager.MMGetRecommendedSongInPlace(1,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(4,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(7,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(8,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(9,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(12,&rankXartist,&rankXsong);
+    Manager.MMAddToSongCount(3,1,10);
     std::cout << "GOT HERE " << std::endl;
 
-    Manager.MMGetRecommendedSongInPlace(1,&rank1artist,&rank1song);
+    Manager.MMAddToSongCount(3,2,10);
     std::cout << "GOT HERE 2 " << std::endl;
-
 
 
     /*Init
@@ -83,6 +88,13 @@ void general1(){
     GetArtistBestSong 3
     RemoveArtist 3
     GetRecommendedSongInPlace 1
+    GetRecommendedSongInPlace 4
+    GetRecommendedSongInPlace 7
+    GetRecommendedSongInPlace 8
+    GetRecommendedSongInPlace 9
+    GetRecommendedSongInPlace 12
+    AddToSongCount 3 1 10
+    AddToSongCount 3 2 10
     //and more
     */
 }

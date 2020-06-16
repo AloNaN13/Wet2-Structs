@@ -36,10 +36,12 @@ ArtistResult Artist::removeSong(int song_id, int* num_of_streams) {
 
 ArtistResult Artist::addToSongCount(int song_id, int count, int* initial_streams) {
     int* pre_count=songs_tree.getElementptr(song_id);
-    *initial_streams=*(songs_tree.getElementptr(song_id));
-    if(pre_count== nullptr){
+    int* if_song_exists = songs_tree.getElementptr(song_id);
+    if(pre_count== nullptr || if_song_exists == nullptr){
         return ARTIST_KEY_DOESNT_EXISTS;
     }
+    *initial_streams=*(songs_tree.getElementptr(song_id));
+
     int pre=*pre_count;
 
     Pair old_pair(pre,song_id);
