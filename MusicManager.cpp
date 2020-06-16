@@ -22,7 +22,7 @@ MMStatusType MusicManager::MMAddArtist(int artistID){
             this->artists_in_system.expandHash();
             // check hashResult?
         }
-        
+
         // put in IF statement if we check the Result
         this->total_num_of_artists++;
 

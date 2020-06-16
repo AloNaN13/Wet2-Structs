@@ -34,10 +34,13 @@ ListResult List::insertNodeToList(ListNode* node_to_insert){
     // remember to create node in the function before we insert it to the list!!!
 
     if(this->first_node == nullptr){
+        node_to_insert->setNextNode(nullptr);
+        node_to_insert->setPrevNode(nullptr);
         first_node = node_to_insert;
         last_node = node_to_insert;
     }
     else{
+        node_to_insert->setPrevNode(nullptr);
         node_to_insert->setNextNode(first_node);
         first_node->setPrevNode(node_to_insert);
         first_node = node_to_insert;

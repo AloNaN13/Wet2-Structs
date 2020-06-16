@@ -43,6 +43,7 @@ HashResult HashTable::hashRemoveNode(int key){
     for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
         if(curr_node->getNodeKey() == key){
             table[hashed_key].removeNodeFromList(curr_node);
+            break;
         }
     }
 
