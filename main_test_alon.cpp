@@ -65,9 +65,6 @@ void general1(){
     Manager.MMGetRecommendedSongInPlace(12,&rankXartist,&rankXsong);
     Manager.MMAddToSongCount(3,1,10);
     Manager.MMAddToSongCount(3,2,10);
-
-    std::cout << "GOT HERE " << std::endl;
-
     Manager.MMAddToSongCount(2,4,10);
     Manager.MMAddToSongCount(2,3,10);
     Manager.MMAddToSongCount(2,2,8);
@@ -78,11 +75,21 @@ void general1(){
     Manager.MMGetArtistBestSong(1,&bestSong);
     Manager.MMGetRecommendedSongInPlace(1,&rankXartist,&rankXsong);
     Manager.MMGetRecommendedSongInPlace(2,&rankXartist,&rankXsong);
-    std::cout << "GOT HERE 2 " << std::endl;
-
     Manager.MMGetRecommendedSongInPlace(3,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(4,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(5,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(6,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(7,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(8,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(9,&rankXartist,&rankXsong);
+    Manager.MMGetRecommendedSongInPlace(12,&rankXartist,&rankXsong);
+    Manager.MMRemoveArtist(3);
 
-    std::cout << "GOT HERE 3 " << std::endl;
+    std::cout << "GOT HERE " << std::endl;
+
+    Manager.MMRemoveSong(3,1);
+
+    std::cout << "GOT HERE 2 " << std::endl;
 
 
 
@@ -122,6 +129,16 @@ void general1(){
     GetRecommendedSongInPlace 1
     GetRecommendedSongInPlace 2
     GetRecommendedSongInPlace 3
+    GetRecommendedSongInPlace 4
+    GetRecommendedSongInPlace 5
+    GetRecommendedSongInPlace 6
+    GetRecommendedSongInPlace 7
+    GetRecommendedSongInPlace 8
+    GetRecommendedSongInPlace 9
+    GetRecommendedSongInPlace 12
+    RemoveArtist 3
+    RemoveSong 3 1
+
     //and more
     */
 }
