@@ -1,6 +1,10 @@
 
 #include "MusicManager.h"
 
+MusicManager::~MusicManager(){
+    this->artists_in_system.deleteHashArtists();
+}
+
 MMStatusType MusicManager::MMAddArtist(int artistID){
 
     try {

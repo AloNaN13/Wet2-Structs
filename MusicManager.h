@@ -78,7 +78,7 @@ private:
     AvlTree<TreeSet, TreeSet> songs_of_system;
 public:
     MusicManager() : artists_in_system(1),total_num_of_artists(0), total_num_of_songs(0) {}; // add hashtable and avltree?
-    ~MusicManager() = default;
+    ~MusicManager();
     MusicManager(const MusicManager &music_manager) = default;
     MusicManager &operator=(const MusicManager &music_manager) = default;
 

@@ -50,6 +50,7 @@ public:
     HashResult expandHash();
     HashResult shrinkHash();
 
+    HashResult deleteHashArtists();
     // printHash?
     // FOR CHECK
     //List& getIndexOfTable(){ return table[3];};

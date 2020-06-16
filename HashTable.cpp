@@ -88,3 +88,17 @@ HashResult HashTable::shrinkHash(){
 
 }
 
+HashResult HashTable::deleteHashArtists(){
+
+    for(int i=0; i<table_size; i++){
+        ListNode* curr_node = this->table[i].getListFirstNode();
+        for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
+            delete(curr_node->getArtistFromNode());
+        }
+    }
+
+    HashResult HASH_SUCCESS;
+
+}
+
+

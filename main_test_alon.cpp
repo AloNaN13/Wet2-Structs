@@ -27,6 +27,8 @@ int main(){
 
 
 
+
+
 /*
 
     int best_song = 0;
@@ -56,7 +58,7 @@ int main(){
 
 
 
-    List indexOfTable = Manager.getArtistsInSystem().getIndexOfTable();
+    //List indexOfTable = Manager.getArtistsInSystem().getIndexOfTable();
 
 
     Manager.MMGetArtistBestSong(123, &best_song);
