@@ -933,9 +933,9 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
 
     if(parent== nullptr){
         root= nullptr;
+        last= nullptr;
         first= nullptr;
         iterator= nullptr;
-        last= nullptr;
         numOfNodes--;
         return AVL_SUCCESS;
     }
