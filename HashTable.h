@@ -1,11 +1,6 @@
 
-
-
-
 #ifndef WET2_STRUCTS_HASHTABLE_H
 #define WET2_STRUCTS_HASHTABLE_H
-
-
 
 #include "List.h"
 
@@ -22,24 +17,17 @@ typedef enum HashResult_t{
     HASH_KEY_DOESNT_EXISTS
 }HashResult;
 
-
-
-
-
 // Check ENUM ERRORS IN FUNCTIONS
-// Check expand and shrink - working properly? deleting the old table properly?
-
-
 
 class HashTable{
 private:
     List* table;
     int table_size;
 public:
-    explicit HashTable(int table_size): table_size(table_size), table(new List[table_size]) {}; // improve the new?
+    explicit HashTable(int table_size):  table(new List[table_size]), table_size(table_size) {}; // improve the new?
     ~HashTable() {delete[] table;};
-    HashTable(const HashTable& hash) = delete; //implement?
-    HashTable& operator=(const HashTable& hash) = delete; //implement?
+    HashTable(const HashTable& hash) = delete;
+    HashTable& operator=(const HashTable& hash) = delete;
 
     int getHashTableSize() { return this->table_size;};
     int hashFunction(int key, int hash_for);
@@ -49,19 +37,8 @@ public:
 
     HashResult expandHash();
     HashResult shrinkHash();
-
     HashResult deleteHashArtists();
-    // printHash?
-    // FOR CHECK
-    //List& getIndexOfTable(){ return table[3];};
-
 
 };
-
-
-
-
-
-
 
 #endif //WET2_STRUCTS_HASHTABLE_H

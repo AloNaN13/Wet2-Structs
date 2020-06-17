@@ -359,6 +359,9 @@ Element* AvlTree<Element,Key>::getNodeInRank(int rank){
             tmp = tmp->right_son;
         }
     }
+
+    //does not reach here - return only for the warning
+    return nullptr;
 }
 
 

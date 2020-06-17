@@ -1,16 +1,5 @@
 
-
-
-
-// implement changes
-
-
-
-
-
-
 #include "List.h"
-
 
 // return value? SUCCESS?
 void List::deleteAllListNodes(ListNode* node) {
@@ -30,8 +19,7 @@ List::~List(){
 // inserts after the curr_node
 ListResult List::insertNodeToList(ListNode* node_to_insert){
 
-    // check if node already exists?
-    // remember to create node in the function before we insert it to the list!!!
+    // already checked if node exists
 
     if(this->first_node == nullptr){
         node_to_insert->setNextNode(nullptr);
@@ -53,7 +41,7 @@ ListResult List::insertNodeToList(ListNode* node_to_insert){
 
 ListResult List::removeNodeFromList(ListNode* node_to_remove){
 
-    // check if node even exists - I checked in the caller function
+    // already checked if node even exists - in the caller function
 
     if(node_to_remove->getNextNode() == nullptr){
         last_node = node_to_remove->getPrevNode();

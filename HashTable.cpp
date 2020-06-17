@@ -12,7 +12,7 @@ int HashTable::hashFunction(int key, int hash_for){
         return (key % this->table_size);
     }
 
-    // doesnt get here
+    // code doesn't reach here, only for the warnings
     return 0;
 }
 
@@ -25,9 +25,6 @@ ListNode* HashTable::hashFindNode(int key){
         }
     }
     return nullptr;
-
-    //should return HashResult?
-
 }
 
 HashResult HashTable::hashInsertNode(ListNode* node_to_insert){
@@ -46,7 +43,6 @@ HashResult HashTable::hashRemoveNode(int key){
             break;
         }
     }
-
     return HASH_SUCCESS;
 }
 
@@ -65,8 +61,7 @@ HashResult HashTable::expandHash(){
     this->table = new_table;
     this->table_size = table_size*2;
     delete[] temp;
-
-    HashResult HASH_SUCCESS;
+    return HASH_SUCCESS;
 }
 
 HashResult HashTable::shrinkHash(){
@@ -83,22 +78,15 @@ HashResult HashTable::shrinkHash(){
     this->table = new_table;
     this->table_size = table_size/2;
     delete[] temp;
-
-    HashResult HASH_SUCCESS;
-
+    return HASH_SUCCESS;
 }
 
 HashResult HashTable::deleteHashArtists(){
-
     for(int i=0; i<table_size; i++){
         ListNode* curr_node = this->table[i].getListFirstNode();
         for(; curr_node != nullptr; curr_node = curr_node->getNextNode()){
             delete(curr_node->getArtistFromNode());
         }
     }
-
-    HashResult HASH_SUCCESS;
-
+    return HASH_SUCCESS;
 }
-
-

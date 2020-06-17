@@ -1,20 +1,16 @@
+
 #ifndef WET1_STRUCTS_MUSICMANAGER_H
 #define WET1_STRUCTS_MUSICMANAGER_H
 
-//#include "AvlTree.h"
-//#include "List.h"
-#include "Artist.h"
 #include "HashTable.h"
 
-
-// decided on enums for exceptions
+// enums for exceptions
 typedef enum MMStatusType_t{
     MM_ALLOCATION_ERROR,
     MM_INVALID_INPUT,
     MM_FAILURE,
     MM_SUCCESS
 }MMStatusType;
-
 
 class TreeSet{
 private:
@@ -32,9 +28,6 @@ public:
     bool operator==(const TreeSet& treeSet)const{
         return (artist_id==treeSet.artist_id && song_id==treeSet.song_id
                     &&num_streams==treeSet.num_streams);
-        /*return ( this->artist_id == treeSet.getArtistID() &&
-                 this->song_id == treeSet.getSongID() &&
-                 this->num_streams == treeSet.getNumStreams());*/
     }
     bool operator<(const TreeSet& treeSet)const {
         if(num_streams>treeSet.num_streams){
@@ -65,10 +58,8 @@ public:
             return false;
         }
         return (song_id>treeSet.song_id);
-
     }
 };
-
 
 class MusicManager {
 private:
@@ -90,43 +81,6 @@ public:
     MMStatusType MMGetArtistBestSong(int artistID, int *songId);
     MMStatusType MMGetRecommendedSongInPlace(int rank, int *artistId, int *songId);
 
-    //FOR CHECK
-    //HashTable& getArtistsInSystem(){ return this->artists_in_system;};
 };
-
-
-
 
 #endif //WET1_STRUCTS_MUSICMANAGER_H
-
-
-
-
-
-
-// OLD MM CODE FROM WET1
-
-/*
-class MusicManager{
-private:
-    AvlTree<Artist,int> artists_tree;
-    StreamList list_of_streams;
-    int totalNumOfSongs;
-public:
-    MusicManager(): totalNumOfSongs(0){};
-    ~MusicManager() = default;
-    MusicManager(const MusicManager& music_manager) = default;
-    MusicManager& operator=(const MusicManager& music_manager) = default;
-
-    StreamList& MMGetListOfStreams() {return this->list_of_streams;};
-    AvlTree<Artist,int>& MMGetArtistsTree() {return this->artists_tree;};
-    MMStatusType MMAddArtist(int artistID, int numOfSongs);
-    MMStatusType MMRemoveArtist(int artistID);
-    MMStatusType MMAddToSongCount(int artistID, int songID);
-    MMStatusType MMNumberOfStreams(int artistID, int songID, int* streams);
-    MMStatusType MMgetRecommendedSongs( int numOfSongs, int* artists, int* songs);
-
-};
-*/
-
-
