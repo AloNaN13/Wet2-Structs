@@ -13,11 +13,11 @@ ArtistResult Artist::addSong(int song_id) {
 }
 
 ArtistResult Artist::removeSong(int song_id, int* num_of_streams) {
-    *num_of_streams=*(songs_tree.getElementptr(song_id));
-    int* current_streams_of_song=songs_tree.getElementptr(song_id);
     if(songs_tree.getElementptr(song_id) == nullptr){//there is no such song under the artist
         return ARTIST_KEY_DOESNT_EXISTS;
     }
+    *num_of_streams=*(songs_tree.getElementptr(song_id));
+    int* current_streams_of_song=songs_tree.getElementptr(song_id);
     Pair pair_of_song(*current_streams_of_song,song_id);
     songs_tree.remove(song_id);
     streams_tree.remove(pair_of_song);
