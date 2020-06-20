@@ -12,52 +12,52 @@ typedef enum MMStatusType_t{
     MM_SUCCESS
 }MMStatusType;
 
-class TreeSet{
+class Trio{
 private:
     int num_streams;
     int artist_id;
     int song_id;
 public:
-    TreeSet(int numStreams, int artist_id, int song_id):num_streams(numStreams),
+    Trio(int numStreams, int artist_id, int song_id):num_streams(numStreams),
                                                       artist_id(artist_id),song_id(song_id){};
-    ~TreeSet()= default;
-    TreeSet(const TreeSet& treeSet)= default;
+    ~Trio()= default;
+    Trio(const Trio& trio)= default;
     int getArtistID() { return artist_id;};
     int getSongID() { return song_id;};
     int getNumStreams() {return num_streams;};
-    bool operator==(const TreeSet& treeSet)const{
-        return (artist_id==treeSet.artist_id && song_id==treeSet.song_id
-                    &&num_streams==treeSet.num_streams);
+    bool operator==(const Trio& trio)const{
+        return (artist_id==trio.artist_id && song_id==trio.song_id
+                    &&num_streams==trio.num_streams);
     }
-    bool operator<(const TreeSet& treeSet)const {
-        if(num_streams>treeSet.num_streams){
+    bool operator<(const Trio& trio)const {
+        if(num_streams>trio.num_streams){
             return true;
         }
-        if(num_streams<treeSet.num_streams){
+        if(num_streams<trio.num_streams){
             return false;
         }
-        if(artist_id<treeSet.artist_id){
+        if(artist_id<trio.artist_id){
             return true;
         }
-        if(artist_id>treeSet.artist_id){
+        if(artist_id>trio.artist_id){
             return false;
         }
-        return (song_id<treeSet.song_id);
+        return (song_id<trio.song_id);
     }
-    bool operator>(const TreeSet& treeSet) const {
-        if(num_streams<treeSet.num_streams){
+    bool operator>(const Trio& trio) const {
+        if(num_streams<trio.num_streams){
             return true;
         }
-        if(num_streams>treeSet.num_streams){
+        if(num_streams>trio.num_streams){
             return  false;
         }
-        if(artist_id>treeSet.artist_id){
+        if(artist_id>trio.artist_id){
             return true;
         }
-        if(artist_id<treeSet.artist_id){
+        if(artist_id<trio.artist_id){
             return false;
         }
-        return (song_id>treeSet.song_id);
+        return (song_id>trio.song_id);
     }
 };
 
@@ -66,7 +66,7 @@ private:
     HashTable artists_in_system;
     int total_num_of_artists;
     int total_num_of_songs;
-    AvlTree<TreeSet, TreeSet> songs_of_system;
+    AvlTree<Trio, Trio> songs_of_system;
 public:
     MusicManager() : artists_in_system(1),total_num_of_artists(0), total_num_of_songs(0) {}; // add hashtable and avltree?
     ~MusicManager();

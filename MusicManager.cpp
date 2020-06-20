@@ -83,8 +83,8 @@ MMStatusType MusicManager::MMAddSong(int artistID, int songID){
         }
 
         // add song with 0 streams to songs_of_system
-        TreeSet treeset_to_add(0, artistID, songID);
-        AvlTreeResult res2 = this->songs_of_system.insert(treeset_to_add, treeset_to_add);
+        Trio trio_to_add(0, artistID, songID);
+        AvlTreeResult res2 = this->songs_of_system.insert(trio_to_add, trio_to_add);
         if(res2 == AVL_KEY_ALREADY_EXISTS){
             return MM_FAILURE;
         }
@@ -117,8 +117,8 @@ MMStatusType MusicManager::MMRemoveSong(int artistID, int songID){
         }
 
         // remove song with from songs_of_system
-        TreeSet treeset_to_remove(*num_of_streams, artistID, songID);
-        AvlTreeResult res2 = this->songs_of_system.remove(treeset_to_remove);
+        Trio trio_to_remove(*num_of_streams, artistID, songID);
+        AvlTreeResult res2 = this->songs_of_system.remove(trio_to_remove);
         if(res2 == AVL_KEY_DOESNT_EXISTS){
             delete num_of_streams;
             return MM_FAILURE;
@@ -150,9 +150,9 @@ MMStatusType MusicManager::MMAddToSongCount(int artistID, int songID, int count)
         if(result==ARTIST_KEY_DOESNT_EXISTS){
             return MM_FAILURE;
         }
-        TreeSet preeThreeSet(pre_adding_streams,artistID,songID);
-        songs_of_system.remove(preeThreeSet);
-        TreeSet after_adding_count(pre_adding_streams+count,artistID,songID);
+        Trio preeTrio(pre_adding_streams,artistID,songID);
+        songs_of_system.remove(preeTrio);
+        Trio after_adding_count(pre_adding_streams+count,artistID,songID);
         songs_of_system.insert(after_adding_count,after_adding_count);
 
         return MM_SUCCESS;
@@ -189,7 +189,7 @@ MMStatusType MusicManager::MMGetRecommendedSongInPlace(int rank, int *artistId, 
             return MM_FAILURE;
         }
         ///need to use rank of tree
-        TreeSet* wanted_rank = songs_of_system.getNodeInRank(rank);
+        Trio* wanted_rank = songs_of_system.getNodeInRank(rank);
         *artistId = wanted_rank->getArtistID();
         *songId = wanted_rank->getSongID();
         return MM_SUCCESS;
