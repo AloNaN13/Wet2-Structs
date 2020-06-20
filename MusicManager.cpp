@@ -112,6 +112,7 @@ MMStatusType MusicManager::MMRemoveSong(int artistID, int songID){
         int* num_of_streams = new int(0);
         ArtistResult res = artist->removeSong(songID, num_of_streams);
         if(res == ARTIST_KEY_DOESNT_EXISTS){
+            delete num_of_streams;
             return MM_FAILURE;
         }
 
@@ -119,6 +120,7 @@ MMStatusType MusicManager::MMRemoveSong(int artistID, int songID){
         TreeSet treeset_to_remove(*num_of_streams, artistID, songID);
         AvlTreeResult res2 = this->songs_of_system.remove(treeset_to_remove);
         if(res2 == AVL_KEY_DOESNT_EXISTS){
+            delete num_of_streams;
             return MM_FAILURE;
         }
 
