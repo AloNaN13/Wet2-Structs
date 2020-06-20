@@ -10,8 +10,11 @@
 
 using namespace std;
 
-typedef enum AvlTreeResult_t{AVL_KEY_ALREADY_EXISTS,AVL_SUCCESS,AVL_ALLOCATION_ERROR
-    ,AVL_KEY_DOESNT_EXISTS
+typedef enum AvlTreeResult_t{
+    AVL_KEY_ALREADY_EXISTS,
+    AVL_SUCCESS,
+    AVL_ALLOCATION_ERROR,
+    AVL_KEY_DOESNT_EXISTS
 }AvlTreeResult;
 
 template <class Element,class Key>
